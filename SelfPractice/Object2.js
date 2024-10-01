@@ -13,6 +13,7 @@ const as = {
     }
 };
 
+console.log(as);
 console.log(as.email);
 console.log(as.fullName.usersName.FirstName);
 console.log(as.fullName.usersName.LastName);
