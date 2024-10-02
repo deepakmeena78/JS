@@ -1,4 +1,4 @@
-let arr = [2,4,67,8,9]
+let arr = [2, 4, 67, 8, 9]
 console.log(arr);
 
 arr.push(5)
@@ -12,7 +12,7 @@ const arrw = arr.join()
 console.log(arr);
 console.log(arrw);
 
-const n = arr.slice(1,3)
+const n = arr.slice(1, 3)
 console.log(n)
 
 const n2 = arr.splice(1.3)

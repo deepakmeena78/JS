@@ -1,10 +1,10 @@
-const name = new String ('Ankit-Meena');
+const name = new String('Ankit-Meena');
 console.log(name);
 
-const update = name.substring(0,4);
+const update = name.substring(0, 4);
 console.log(update);
 
-const update2  = name.slice(-10,5);
+const update2 = name.slice(-10, 5);
 console.log(update2);
 
 const name2 = "   Infobeans    ";

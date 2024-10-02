@@ -1,9 +1,9 @@
-(function chai(){
+(function chai() {
     console.log("DB CONNNECT");
-})() ;                                                         // () Call function
+})();                                                         // () Call function
 
 //-----------------------------
 
 ((name) => {
     console.log(`DB CONNNECT ${name}`);
-})("Ankit") ;                                                  // argument
+})("Ankit");                                                  // argument

@@ -1,6 +1,6 @@
-function one(){
+function one() {
     const user = "Ankit"
-    function two (){
+    function two() {
         const user2 = "Meena"
         console.log(user);
     }
