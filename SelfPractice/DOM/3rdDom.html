@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(20, 20, 29); color: antiquewhite;">
+    <ul class="ull">
+        <li>InfoBeans Fundation</li>
+    </ul>
+</body>
+<script>
+    function add(langu) {
+        const li = document.createElement('li')
+        li.innerHTML = `${langu}`
+        document.querySelector('.ull').appendChild(li)
+    }
+    add('JAVA J')
+    add('PYTHON')
+
+    function add2(langu2) {
+        const li2 = document.createElement('li')
+        li2.appendChild(document.createTextNode(langu2))
+        document.querySelector('.ull').appendChild(li2)
+    }
+    add2('InfoBeans')
+    add2('Fundation')
+    add2('Indore')
+
+    const temp = document.querySelector("li:nth-child(2)")
+    const li3 = document.createElement('li')
+    li3.textContent = "Bhopal"
+    temp.replaceWith(li3)
+
+
+    const upadate = document.querySelector('li:first-child')       //Edit
+    upadate.outerHTML = "<li>Ankit</li>"
+
+    const remove1 = document.querySelector('li:last-child')
+    remove1.remove()
+</script>
+
+</html>
