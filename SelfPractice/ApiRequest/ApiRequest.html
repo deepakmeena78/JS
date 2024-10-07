@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .change {
+        display: flex;
+    }
+</style>
+
+<body style="background-color: rgb(22, 29, 43); color: aliceblue;">
+    <div class="change">
+        <h1>FolloWer : </h1>
+        <h1 id="FolloWer"></h1>
+    </div>
+</body>
+
+<script>
+    const url = 'https://api.github.com/users/deepakmeena78';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            document.querySelector('#FolloWer').innerHTML = JSON.stringify(data, null, 2);
+            if (data.followers) {
+                document.querySelector('#FolloWer').innerHTML = data.followers;
+            }
+        }
+    }
+    xhr.send();
+
+</script>
+
+</html>

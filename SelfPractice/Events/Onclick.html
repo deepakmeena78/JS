@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: black;
+    }
+
+    .h22 {
+        color: aliceblue;
+        margin-left: 42px;
+    }
+</style>
+
+<body>
+    <h2 class="h22">Collection_Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="p1" src="Images/Soyam1.jpg" alt="Collection"></li>
+            <li><img width="200px" id="p2" src="Images/Soyam2.jpg" alt="Collection"></li>
+            <li><img width="200px" id="p3" src="Images/Soyam3.jpg" alt="Collection"></li>
+            <li><img width="200px" id="p4" src="Images/Soyam4.jpg" alt="Collection"></li>
+            <li><img width="200px" id="p5" src="Images/Soyam5.jpg" alt="Collection"></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('p1').onclick = function () {
+    //     alert("Don't Touch Me") 
+    // }
+
+    document.getElementById('p1').addEventListener('click',function(){
+        alert("Don't Touch Me")
+    })
+</script>
+
+</html>
