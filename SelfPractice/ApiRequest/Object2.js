@@ -10,7 +10,6 @@ const obj = {
 
 console.log(obj);
 
-
 function user(Name, Batch, Learn) {
     this.Name = Name;
     this.Batch = Batch;

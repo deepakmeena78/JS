@@ -2,7 +2,7 @@ const temp = document.querySelectorAll('.button')
 const body = document.querySelector("body")
 
 temp.forEach(function (button) {
-    button.addEventListener('click', function (e) { // Fix here
+    button.addEventListener('click', function (e) {
         console.log(e);
         console.log(e.target);
 
