@@ -1,1 +1,1 @@
-const clock = document
+const clock = document.getElementById
