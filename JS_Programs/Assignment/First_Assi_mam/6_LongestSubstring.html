@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Substring Without Repeating Characters</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const str = prompt('Enter String: ');
+    let lengthh = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        let unic = "";
+
+        for (let j = i; j < str.length; j++) {
+            let strUpdate = str.charAt(j).toLowerCase();
+
+            if (!unic.includes(strUpdate)) {
+                unic += strUpdate;
+                lengthh = Math.max(lengthh, unic.length);
+            } else {
+                break;
+            }
+        }
+    }
+    document.write("Your Input :  " + str,"\n");
+    document.write("Sub String Length :  " + lengthh,"\n");
+
+    console.log("Your Input :  " + str,"\n"); 
+    console.log("Sub String Length :  " + lengthh,"\n"); 
+</script>
+
+</html>
