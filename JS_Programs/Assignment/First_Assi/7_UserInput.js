@@ -6,14 +6,14 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-readline.question('Enter Your Name :  ',s1 => {
-readline.question('Confirm Your Name :  ',s2 => {
-    if(s1 == s2){
-        console.log(`Equal : ${s1}`);
-    }
-    else{
-        console.log("Not Equal");
-    }
-    readline.close();
-});
+readline.question('Enter Your Name :  ', s1 => {
+    readline.question('Confirm Your Name :  ', s2 => {
+        if (s1 == s2) {
+            console.log(`Equal : ${s1}`);
+        }
+        else {
+            console.log("Not Equal");
+        }
+        readline.close();
+    });
 });

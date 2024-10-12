@@ -11,6 +11,10 @@ readline.question('Enter Your Name :  ', s1 => {
 });
 
 function rev(str) {
-    const main = str.split('').reverse().join('');
-    console.log(main);
+    let temp = str.toString();
+    for (let i = temp.length; i >= 0; i--) {
+        let temp2 = temp.charAt(i);
+        let final = temp2;
+        process.stdout.write(final);
+    }
 }

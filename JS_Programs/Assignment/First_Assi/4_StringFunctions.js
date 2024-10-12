@@ -4,8 +4,8 @@ console.log(str.length);                         // 9
 console.log(str.charAt(1));                      // n
 console.log(str.indexOf("f"));                   // 2
 console.log(str.lastIndexOf("I"));               // 0
-console.log(str.slice(0, 8));                     // InfoBean
-console.log(str.substr(0, 5));                    // InfoB
+console.log(str.slice(0, 8));                    // InfoBean
+console.log(str.substr(0, 5));                   // InfoB
 console.log(str.toLocaleLowerCase());            // infobeans
 console.log(str.toLocaleUpperCase());            // INFOBEANS
 
