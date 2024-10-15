@@ -1,5 +1,5 @@
-// 13. Given an array containing numbers from 1 to n with one missing, find the missing
-// number 
+// 14. Write a function to move all zeros in an array to the end while maintaining the order
+// of non-zero elements.
 
 const readline = require('readline').createInterface({
     input: process.stdin,
@@ -15,25 +15,24 @@ readline.question('Enter Array Number : ', str => {
 let j = 0;
 function fun(num) {
     for (let i = 0; i < num.length; i++) {
-        let temp = num.charAt(i);
-        if (temp != " ") {
-            arr[j] = temp;
+        let char = num.charAt(i);
+        if (char != " ") {
+            arr[j] = char;
             j++;
         }
     }
     for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
-            if (arr[j] < arr[j + 1]) {
+        for (let j = 0; j < arr.length - 1; j++) {
+            if (arr[j] == 0) {
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
         }
     }
-    for (let i = arr[0]; i < arr.length; i++) {
-        if (i != arr[i]) {
-            console.log("First Missing : ", i);
-            break;
-        }
+    let ai = "";
+    for (let i = 0; i < arr.length; i++) {
+        ai = ai +" "+arr[i];
     }
+    console.log("Zero :=>  ",ai);
 }
