@@ -14,12 +14,12 @@ readline.question('Enter a Number : ', str => {
     readline.close();
 });
 
-let cou = 0;
-function fun(num) { 
-    for (let i = num; i >= 1; i--) {
-        for (let j = num; j <= (2 * num) - 1; j++) {
-            if (j >= i && j <= (2 * num) - i) {
-                process.stdout.write("*");
+function fun(num) {
+    for (let i = 1; i <= num; i++) {
+        let cou = 1;
+        for (let j = 1; j <= (i + i) - 1; j++) {
+            if (j >= i && j <= i) {
+                process.stdout.write(cou);
             }
             else {
                 process.stdout.write(" ");
