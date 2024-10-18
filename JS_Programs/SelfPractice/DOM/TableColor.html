@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(110, 164, 174);">
+
+    <h3>Change The Color 👇🏻 </h1>
+    <button onclick="change('red','blue')">Red Blue</button>
+    <button onclick="change('mediumseagreen','orange')">Green-orange</button>
+    <button onclick="change('pink','yellow')">Pink Yellow</button>
+    <table id="dataTabel" width="100%" border="1">
+        <tr>
+            <td>S.No.</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Content</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Ankit</td>
+            <td>19</td>
+            <td>6260576040</td>
+        </tr>
+    </table>
+</body>
+<script>
+    function change(color1, color2) {
+        let get = document.getElementById('dataTabel');
+        for (let i = 0; i < get.rows.length; i++) {
+            if (i % 2)
+                get.rows[i].style.backgroundColor = color1;
+            else
+                get.rows[i].style.backgroundColor = color2;
+        }
+    }
+</script>
+
+</html>

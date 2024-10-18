@@ -1,4 +1,4 @@
-const fileInput = document.querySelector(".file-inout"),
+const fileInput = document.querySelector(".file-input"),
     filteroption = document.querySelectorAll(".filter bu1"),
     previewImage = document.querySelector(".preimage img"),
     filterName = document.querySelector(".filter name"),

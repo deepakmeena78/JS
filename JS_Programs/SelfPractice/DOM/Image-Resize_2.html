@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <img id="image" src="images/Image-1.jpg" width="200px" height="200px">
+        <br><br>
+        <button onclick="plus()">+</button>
+        <button onclick="minus()">-</button>
+    </center>
+</body>
+    <script>
+        function plus (){
+            var doc = document.getElementById("image");
+            doc.width = doc.width + 20;
+            doc.height = doc.height + 20;
+        }
+
+        function minus (){
+            var doc = document.getElementById("image");
+            doc.width = doc.width - 20;
+            doc.height = doc.height - 20;
+        }
+    </script>
+</html>

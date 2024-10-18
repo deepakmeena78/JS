@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <img id="image" src="images/Image-1.jpg" width="200px" height="200px">
+        <br><br>
+        <button onclick="resize(1)">+</button>
+        <button onclick="resize(0)">-</button>
+    </center>
+</body>
+<script>
+    function resize(ai) {
+        var doc = document.getElementById("image");
+        if (ai) {
+            doc.width = doc.width + 20;
+            doc.height = doc.height + 20;
+        }
+        else {
+            doc.width = doc.width - 20;
+            doc.height = doc.height - 20;
+        }
+    }
+
+</script>
+
+</html>

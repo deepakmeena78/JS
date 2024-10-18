@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <img onmouseleave="removeRotation()" onmouseover="rotateImage()" id="main" src="images/image-4.jpg"
+            width="500px" height="350px" />
+        <br><br>
+        <img onclick="swapImage(this)" id="first" src="images/Image-1.jpg" width="100px"
+            height="100px" />&nbsp;&nbsp;&nbsp;&nbsp;
+        <img onclick="swapImage(this)" id="second" src="images/image-2.jpg" width="100px"
+            height="100px" />&nbsp;&nbsp;&nbsp;&nbsp;
+        <img onclick="swapImage(this)" id="third" src="images/image-3.jpg" width="100px"
+            height="100px" />&nbsp;&nbsp;&nbsp;&nbsp;
+    </center>
+    <script>
+        function swapImage(currentImage) {
+            let mainImage = document.getElementById("main");
+            let temp = mainImage.src;
+            mainImage.src = currentImage.src;
+            currentImage.src = temp;
+        }
+        function rotateImage() {
+            let mainImage = document.getElementById("main");
+            mainImage.classList.add("rotate-image");
+            mainImage.style.transform = "rotate(90deg)";
+            removeRotation();
+        }
+        function removeRotation() {
+            let mainImage = document.getElementById("main");
+            mainImage.classList.remove(["rotate-image"]);
+        }
+    </script>
+
+</html>

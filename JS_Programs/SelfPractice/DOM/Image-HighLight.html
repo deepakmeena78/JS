@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <img id="image" src="images/Image-1.jpg" width="300px" height="300px">
+        <br><br>
+        <img id="image1" onclick="change('image1')" src="images/Image-2.jpg" width="100px"
+            height="100px">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="image2" onclick="change('image2')" src="images/Image-3.jpg" width="100px"
+            height="100px">&nbsp;&nbsp;&nbsp;&nbsp;
+        <img id="image3" onclick="change('image3')" src="images/Image-4.jpg" width="100px"
+            height="100px">&nbsp;&nbsp;&nbsp;&nbsp;
+    </center>
+</body>
+<script>
+    function change(ai) {
+        let mainImage = document.getElementById("image");
+        let currentImage = document.getElementById(ai);
+        let temp = mainImage.src;
+        mainImage.src = currentImage.src;
+        currentImage.src = temp;
+    }
+</script>
+
+</html>
