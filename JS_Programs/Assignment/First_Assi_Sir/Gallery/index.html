@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,11 @@
 
 <body>
     <button id="Add">Choose Image</button>
-    <button id="Delete">Delete Image</button>
-    <p><input multiple type="file" accept="image/*" name="image" id="File" onchange="loadFile(event)" style=""></p>
-    <p class="cont"></p>
+    <button id="Delete">Delete All</button>
+    <input multiple type="file" accept="image/*" id="Input" hidden>
+    <div class="cont" id="imageContainer"></div>
+
+    <script src="main.js"></script>
 </body>
-<script src="main.js"></script>
 
 </html>

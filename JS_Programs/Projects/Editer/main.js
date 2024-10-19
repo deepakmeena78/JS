@@ -28,6 +28,6 @@ filterValue.innerText = `${filterSlider.value}%`;
 const selectedFilter = document.querySelector('filter')
 }
 
-fileInput.addEventListener("change", loadImage);
+fileInput.addEventListener("change", loadImage);    
 filterSlider.addEventListener("input", updateFilter);
 chooseImage.addEventListener("click", () => fileInput.click());
