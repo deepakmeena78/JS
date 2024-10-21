@@ -1,33 +1,32 @@
-const fileInput = document.querySelector(".file-input"),
-    filteroption = document.querySelectorAll(".filter bu1"),
-    previewImage = document.querySelector(".preimage img"),
-    filterName = document.querySelector(".filter name"),
-    filterValue = document.querySelector(".filter .value"),
-    filterSlider = document.querySelector(".slider input"),
-    chooseImage = document.querySelector(".choose");
+const fileInput = document.querySelector('.file-input'),
+    fileOptions = document.querySelectorAll('.filter button'),
+    filterName = document.querySelector('.filter-info .name'),
+    filterValue = document.querySelector('.filter-info .value'),
+    filterSlider = document.querySelector('.slider input'),
+    previewImage = document.querySelector('.preview-img img'),
+    chooseImage = document.querySelector('.choose-img');
 
 const loadImage = () => {
     let file = fileInput.files[0];
     if (!file) return;
     previewImage.src = URL.createObjectURL(file);
     previewImage.addEventListener("load", () => {
-        document.querySelector('dd').classList.remove('disable');
+        document.querySelector(".container").classList.remove("disable")
     });
 }
 
-filteroption.forEach(Option => {
-    Option.addEventListener("click", () => {
+fileOptions.forEach(option => {
+    option.addEventListener("click", () => {
         document.querySelector(".filter .active").classList.remove("active");
-        Option.classList.add("active");
-        filterName.innerText = Option.innerText;
+        option.classList.add("active");
+        filterName.innerText = option.innerText;
     });
 });
 
-const updateFilter = () =>{
-filterValue.innerText = `${filterSlider.value}%`;
-const selectedFilter = document.querySelector('filter')
+const updateFilter = () => {
+    filterValue.innerHTML = `${filterSlider.value}%`;
 }
 
-fileInput.addEventListener("change", loadImage);    
-filterSlider.addEventListener("input", updateFilter);
-chooseImage.addEventListener("click", () => fileInput.click());
+fileInput.addEventListener('change', loadImage)
+filterSlider.addEventListener("input", updateFilter)
+chooseImage.addEventListener('click', () => fileInput.click());

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="bg" style="height: 775px;">
+        <img src="Image/Phool.png" style="border-radius: 100px 100px 100px 0px; margin-left: 100px; margin-top: 100px;">
+    </div>
+</body>
+<script>
+    const bg = document.getElementById('bg');
+    function randomColor() {
+        return Math.floor(Math.random() * 255);
+    }
+    bg.addEventListener('click', () => {
+        bg.style.backgroundColor = 'rgba(' + randomColor() + ',' + randomColor() + ',' + randomColor() + ')'
+    })
+</script>
+
+</html>

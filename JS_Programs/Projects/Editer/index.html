@@ -12,9 +12,9 @@
 
 <body>
     <div class="container">
-        <h1>Photo Editor :</h1>
+        <h2>Photo Editor :</h2>
         <div class="wrapper">
-            <div class="editore-panel">
+            <div class="editor-panel">
                 <div class="filter">
                     <label class="title">Filter</label>
                     <div class="options">
@@ -28,7 +28,7 @@
                             <p class="name">Brightness</p>
                             <p class="value">100%</p>
                         </div>
-                        <input type="range" min="0" max="100">
+                        <input type="range" value="100" min="0" max="200">
                     </div>
                 </div>
                 <div class="rotate">
@@ -48,6 +48,7 @@
         <div class="controls">
             <button class="reset-filter">Reset Filter</button>
             <div class="row">
+                <input type="file" class="file-input" accept="image/*" hidden>
                 <button class="choose-img">Choose Image</button>
                 <button class="save-img">Save Image</button>
 
