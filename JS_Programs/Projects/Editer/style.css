@@ -23,9 +23,11 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
 }
 
-.container.disabel :where(.editore-panel, .reset-filter, .save-img) {
-    opacity: 0.6;
+.disable .editor-panel,
+.disable .controls .reset-filter,
+.disable .controls .save-img {
     pointer-events: none;
+    opacity: 0.5;
 }
 
 .container h1 {
@@ -116,10 +118,12 @@ body {
 }
 
 .wrapper .preview-img {
-    margin-left: 20px;
-    justify-content: center;
-    align-self: center;
+    flex-grow: 1;
     display: flex;
+    overflow: hidden;
+    align-self: center;
+    justify-content: center;
+    margin-left: 20px;
 }
 
 .preview-img img {

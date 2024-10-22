@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
-    
+    <div class="container mt-5">
+        <form>
+            <input onclick="checkBox()" type="checkbox" value="A" id="firstBox">
+            <small id="label1"></small><br>
+            <label>A</label><br>
+            <input onclick="checkBox()" type="checkbox" value="B" id="secondBox">
+            <small id="label2"></small><br>
+            <label>B</label><br>
+        </form>
+    </div>
 </body>
+<script>
+    function checkBox() {
+
+        let checkboxA = document.getElementById('firstBox');
+        let checkboxAError = document.getElementById('label1');
+
+        let checkboxB = document.getElementById('secondBox');
+        let checkboxBError = document.getElementById('label2');
+
+        if (checkboxA.checked) {
+            checkboxAError.innerHTML = "Checked: A";
+        } else {
+            checkboxAError.innerHTML = "Please Select";
+        }
+        if (checkboxB.checked) {
+            checkboxBError.innerHTML = "Checked: B";
+        } else {
+            checkboxBError.innerHTML = "Please Select";
+        }
+    }
+</script>
+
 </html>

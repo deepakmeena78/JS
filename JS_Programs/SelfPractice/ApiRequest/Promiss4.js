@@ -17,4 +17,4 @@ p.then((user) => {
     console.log(kuch_Toh_Hua_Hai, '=> ');
 }).catch(function (exception) {
     console.log(exception);
-}).finally(() => console.log("Code Chal Gaya Kya ? 🤣"))
+}).finally(() => console.log("🤣"))
