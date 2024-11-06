@@ -7,14 +7,14 @@ mainDiv.style.height = '100vh';
 
 
 let miniDiv = document.createElement('div');
-miniDiv.setAttribute("style", "height: 510px; width: 900px; border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0px 0px 20px red;");
+miniDiv.setAttribute("style", "height: 510px; width: 900px; border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0px 0px 20px 10px #808080;");
 
 let functionalityDiv = document.createElement('div');
 functionalityDiv.setAttribute("style", "width: 50%; height: 90%; display: flex; flex-direction: column; justify-content: center; align-items: center;");
 
 let h1 = document.createElement("h1");
 h1.innerHTML = "Easy Edit";
-h1.setAttribute("style", "margin-left: 300px; text-shadow: 0px 5px 10px yellow; display: flex;");
+h1.setAttribute("style", "margin-left: 100px; text-shadow: 4px 1px 1px #808080; display: flex; color: red; font-size: 60px");
 functionalityDiv.appendChild(h1);
 
 let ImageDiv = document.createElement('div');
@@ -26,8 +26,8 @@ fileInput.setAttribute("accept", "image/*");
 fileInput.style.display = 'none';
 
 let localImage = document.createElement("img");
-localImage.setAttribute("src", "gallery.png");
-localImage.setAttribute("style", "max-width: 100%; max-height: 80%; margin: auto; position: absolute; filter: drop-shadow(0px 5px 10px green);margin: 0px");
+localImage.setAttribute("src", "Image/gallery.png");
+localImage.setAttribute("style", "max-width: 100%; max-height: 80%; margin: auto; position: absolute; filter: drop-shadow(0px 5px 10px black);margin: 0px");
 
 ImageDiv.appendChild(localImage);
 
@@ -36,9 +36,9 @@ Img.setAttribute("style", "max-width: 100%; max-height: 100%; display: none; mar
 ImageDiv.appendChild(Img);
 
 fileInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
+    let file = event.target.files[0];
     if (file) {
-        const reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function (e) {
             Img.setAttribute("src", e.target.result);
             Img.style.display = 'block';
@@ -50,15 +50,85 @@ fileInput.addEventListener('change', (event) => {
 
 
 let ChooseButton = document.createElement('button');
-ChooseButton.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 600px; margin-left: 20px;box-shadow: 0px 5px 20px blue;");
+ChooseButton.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 600px; margin-left: 20px;box-shadow: 0px 0px 10px 5px #808080;");
 ChooseButton.textContent = "Choose Image";
 ChooseButton.addEventListener('click', () => {
     fileInput.click();
 });
 
 let saveImage = document.createElement("button");
-saveImage.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 600px; margin-left: 20px; box-shadow: 0px 5px 20px blue;");
+saveImage.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 600px; margin-left: 50px; box-shadow: 0px 0px 10px 5px #808080;");
 saveImage.textContent = "Save Image";
+
+//crop Image button
+let CropImage = document.createElement("button");
+CropImage.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 600px; margin-left: 5px; box-shadow: 0px 0px 10px 5px #808080;");
+CropImage.textContent = "Crop Image";
+
+ // CropImage FunCtion And Fun ----------------------------------------------------------------
+
+const CropImageFunction = CropImage.addEventListener('click', () => {   
+    let upload = document.createElement('input');
+    upload.setAttribute("type", "file");
+    upload.setAttribute("accept", "image/*");
+    upload.style.display = 'none';
+
+    const imgContainer = document.createElement('#div');
+
+    const croppedImage = document.createElement('#img');
+    croppedImage.setAttribute("src", "Image/gallery.png");
+
+    const cropButton = document.createElement('#button');
+
+    var croppieInstance = new Croppie(imgContainer, {
+        viewport: { width: 200, height: 200, type: 'square' },
+        boundary: { width: 400, height: 400 },
+        enableResize: true
+    });
+
+    upload.addEventListener('change', function (e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            croppieInstance.bind({
+                url: event.target.result
+            });
+        };
+        reader.readAsDataURL(file);
+
+        imgContainer.style.display = 'block';
+        cropButton.style.display = 'block';
+
+        cropButton.addEventListener('click', function () {
+            croppieInstance.result('canvas').then(function (result) {
+                croppedImage.src = result;
+                croppedImage.style.display = 'block';
+
+                btnRefresh.style.display = 'block';
+
+                imgContainer.style.display = 'none';
+                upload.style.display = 'none'
+                cropButton.style.display = 'none';
+
+            });
+        });
+    });
+
+    cropButton.addEventListener('click', function () {
+        croppieInstance.result('canvas').then(function (result) {
+            croppedImage.src = result;
+            croppedImage.style.display = 'block';
+
+            btnRefresh.style.display = 'block';
+
+            imgContainer.style.display = 'none';
+            upload.style.display = 'none'
+            cropButton.style.display = 'none';
+        });
+    });
+});
+
+//-------------------------------------------------------------------------------------
 
 let RangeButton = document.createElement('input');
 RangeButton.setAttribute("type", "range");
@@ -70,7 +140,7 @@ RangeButton.addEventListener('input', () => {
 });
 
 let selectBar = document.createElement('select');
-selectBar.setAttribute("style", "width: 120px; border-radius: 5px; box-shadow: 0px 0px 20px green;");
+selectBar.setAttribute("style", "width: 120px; border-radius: 5px; box-shadow: 0px 0px 10px 5px #808080;");
 
 let options = [
     { value: "none", text: "Select Filter", min: 0, max: 100, default: 0 },
@@ -117,8 +187,7 @@ const updateImageFilter = () => {
         invert(${filterValues.invert}%)
         opacity(${filterValues.opacity}%)
         saturate(${filterValues.saturate}%)
-        sepia(${filterValues.sepia}%)
-    `;
+        sepia(${filterValues.sepia}%)`;
 };
 
 const setInitialRange = () => {
@@ -149,7 +218,7 @@ saveImage.addEventListener('click', () => {
         ctx.filter = Img.style.filter;
         ctx.drawImage(Img, 0, 0, canvas.width, canvas.height);
         const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png');
+        link.href = canvas.toDataURL('image/png'); 0.
         link.download = 'edited_image.png';
         link.click();
     }
@@ -157,7 +226,7 @@ saveImage.addEventListener('click', () => {
 
 let resetButton = document.createElement('button');
 resetButton.textContent = "Reset Filter";
-resetButton.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 120px; box-shadow: 0px 5px 20px blue;");
+resetButton.setAttribute("style", "width: 120px; height: 30px; border-radius: 5px; margin-top: 120px; box-shadow: 0px 0px 10px 5px #808080;");
 resetButton.addEventListener('click', () => {
     Img.style.filter = 'none';
     Object.keys(filterValues).forEach(key => filterValues[key] = options.find(opt => opt.value === key).default);
@@ -176,4 +245,5 @@ ImageDiv.appendChild(saveImage);
 functionalityDiv.appendChild(resetButton);
 miniDiv.appendChild(functionalityDiv);
 miniDiv.appendChild(ImageDiv);
+miniDiv.appendChild(CropImage);
 mainDiv.appendChild(miniDiv);
