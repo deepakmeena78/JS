@@ -1,28 +1,39 @@
+let style1 = document.createElement("style");
+style1.innerHTML = `
+   @media screen and (min-width: 450px) and (max-width : 1100px) {
+   #miniDiv{
+       display : none;
+    //    flex-direction : column;
+   }
+}
+`;
+document.head.appendChild(style1)
 // Main Div
 let mainDiv = document.getElementById('main');
 mainDiv.setAttribute("style", "display: flex; justify-content: center; align-items: center; height: 100vh; position: relative;");
 
-// window.addEventListener('load', () => {
-//     const loader = document.querySelector('.loader');
-//     const mainDiv = document.getElementById("main");
-//     const loadingType = document.createElement('h1');
-//     loadingType.innerHTML = "Loading...";
-//     loadingType.style.cssText = "text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin-bottom: 100px; color: white";
-//     loader.appendChild(loadingType);
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    const mainDiv = document.getElementById("main");
+    const loadingType = document.createElement('h1');
+    loadingType.innerHTML = "Loading...";
+    loadingType.style.cssText = "text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin-bottom: 100px; color: white";
+    loader.appendChild(loadingType);
 
-//     loader.style.cssText = "border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px;";
+    loader.style.cssText = "border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px;";
 
-//     mainDiv.style.display = 'none';
+    mainDiv.style.display = 'none';
 
-//     setTimeout(() => {
-//         loader.style.display = 'none';
-//         mainDiv.style.display = 'flex';
-//     }, 5000);
-// });
+    setTimeout(() => {
+        loader.style.display = 'none';
+        mainDiv.style.display = 'flex';
+    }, 5000);
+});
 
 
 // Mini Div
 let miniDiv = document.createElement('div');
+miniDiv.setAttribute("id" , "miniDiv");
 miniDiv.style.cssText = "height: calc(100vh - 40px); width: calc(100vw - 200px); display: flex; justify-content: center; align-items: center; box-shadow: 0px 0px 20px 10px #808080; border-radius: 10px; background-size: cover; margin: 20px;";
 miniDiv.style.backgroundImage = 'url("Image/MiniDiv11.png")';
 
@@ -83,26 +94,42 @@ ImageDiv.appendChild(ImgDiv);
 let chooseButton = document.createElement('button'); // Choose Image Button
 chooseButton.textContent = "Choose Image";
 chooseButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
+chooseButton.className = 'ButttonHover';
 chooseButton.addEventListener('click', () => fileInput.click());
 
 let cropButton = document.createElement("button"); // Crop Image Button
 cropButton.textContent = "Crop Image";
 cropButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
+cropButton.id = 'cropButton';
 cropButton.disabled = true;
 
 let saveButton = document.createElement("button"); // Save Image Button
 saveButton.textContent = "Save Image";
 saveButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
+saveButton.id = 'saveButton';
 saveButton.disabled = true;
 
 let selectFilter = document.createElement('select'); // Select Filter Dropdown
 selectFilter.disabled = true;
 selectFilter.setAttribute("class", "form-select");
 selectFilter.style.cssText = "width:250px; height: 40px; margin-top: 20px; border-radius: 5px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
+cropButton.id = 'cropButton';
+
+var style = document.createElement('style');
+style.innerHTML = `
+  #selectFilterButton:hover,
+  #saveButton:hover,
+  #cropButton:hover {
+    background-color: red;
+  }
+`;
+
+mainDiv.appendChild(style);
+
 
 let rangeInput = document.createElement('input'); // Range Button
 rangeInput.type = 'range';
-rangeInput.style.cssText = "width: 300px; margin-top: 30px;";
+rangeInput.style.cssText = "width: 300px; margin-top: 30px; cursor:pointer;";
 rangeInput.disabled = true;
 
 let plusMinusDiv = document.createElement('div'); // Div for Plus and Minus
@@ -110,7 +137,7 @@ plusMinusDiv.style.cssText = "display: flex; align-content: center; flex-directi
 
 let Minus = document.createElement("img"); // Minus Button
 Minus.src = 'Image/Minus-.png';
-Minus.style.height = '30px';
+Minus.style.cssText = 'height: 30px; cursor:pointer;';
 
 let rangeLabel = document.createElement('p'); // Percentage Label
 rangeLabel.innerText = "0%";
@@ -118,7 +145,7 @@ rangeLabel.style.margin = "30px";
 
 let Plus = document.createElement("img"); // Plus Button
 Plus.src = 'Image/Plus-.png';
-Plus.style.height = '30px';
+Plus.style.cssText = 'height: 30px; cursor:pointer;';
 
 plusMinusDiv.appendChild(Minus);
 plusMinusDiv.appendChild(rangeLabel);
@@ -126,7 +153,7 @@ plusMinusDiv.appendChild(Plus);
 
 let resetButton = document.createElement("button"); // Reset Button
 resetButton.textContent = "Reset Filter";
-resetButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
+resetButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
 resetButton.disabled = true;
 
 let CropDoneButton = document.createElement("button"); // Reset Button
