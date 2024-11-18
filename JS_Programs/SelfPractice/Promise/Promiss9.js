@@ -18,6 +18,6 @@ Promisss.then(function (user) {
     console.log(Name);
 }).catch(function (Error) {
     console.log(Error);
-}).finally(function(){
+}).finally(function () {
     console.log("Finally Error A Gai");
 })

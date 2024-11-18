@@ -1,39 +1,29 @@
-let style1 = document.createElement("style");
-style1.innerHTML = `
-   @media screen and (min-width: 450px) and (max-width : 1100px) {
-   #miniDiv{
-       display : none;
-    //    flex-direction : column;
-   }
-}
-`;
-document.head.appendChild(style1)
 // Main Div
 let mainDiv = document.getElementById('main');
 mainDiv.setAttribute("style", "display: flex; justify-content: center; align-items: center; height: 100vh; position: relative;");
 
-window.addEventListener('load', () => {
-    const loader = document.querySelector('.loader');
-    const mainDiv = document.getElementById("main");
-    const loadingType = document.createElement('h1');
-    loadingType.innerHTML = "Loading...";
-    loadingType.style.cssText = "text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin-bottom: 100px; color: white";
-    loader.appendChild(loadingType);
+// window.addEventListener('load', () => {
+//     const loader = document.querySelector('.loader');
+//     const mainDiv = document.getElementById("main");
+//     const loadingType = document.createElement('h1');
+//     loadingType.innerHTML = "Loading...";
+//     loadingType.style.cssText = "text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin-bottom: 100px; color: white";
+//     loader.appendChild(loadingType);
 
-    loader.style.cssText = "border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px;";
+//     loader.style.cssText = "border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px;";
 
-    mainDiv.style.display = 'none';
+//     mainDiv.style.display = 'none';
 
-    setTimeout(() => {
-        loader.style.display = 'none';
-        mainDiv.style.display = 'flex';
-    }, 5000);
-});
+//     setTimeout(() => {
+//         loader.style.display = 'none';
+//         mainDiv.style.display = 'flex';
+//     }, 5000);
+// });
 
 
 // Mini Div
 let miniDiv = document.createElement('div');
-miniDiv.setAttribute("id" , "miniDiv");
+miniDiv.setAttribute("id", "miniDiv");
 miniDiv.style.cssText = "height: calc(100vh - 40px); width: calc(100vw - 200px); display: flex; justify-content: center; align-items: center; box-shadow: 0px 0px 20px 10px #808080; border-radius: 10px; background-size: cover; margin: 20px;";
 miniDiv.style.backgroundImage = 'url("Image/MiniDiv11.png")';
 
@@ -70,7 +60,7 @@ let OriginalImage = document.createElement('div');
 OriginalImage.style.cssText = "width: 100%; height: 5%; display: flex; justify-content: center; align-items: center; margin: 5px; overflow: hidden; position: relative;";
 let OriginalImageText = document.createElement('h2');
 OriginalImageText.innerText = "Original Image";
-OriginalImageText.style.cssText = "font-size: 30px; color: white; text-shadow: 2px 2px 4px black, -1px -1px 4px black, 1px -1px 4px black, -1px 1px 4px black, 1px 1px 4px black;";
+OriginalImageText.style.cssText = "font-size: 30px; margin-left:20px; font-style: italic; color: black; text-shadow: 2px 2px 5px rgba(128, 128, 128, 0.5), 4px 4px 10px rgba(128, 128, 128, 0.3);";
 OriginalImage.appendChild(OriginalImageText);
 
 // Selected Image Div
@@ -94,37 +84,37 @@ ImageDiv.appendChild(ImgDiv);
 let chooseButton = document.createElement('button'); // Choose Image Button
 chooseButton.textContent = "Choose Image";
 chooseButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
-chooseButton.className = 'ButttonHover';
+chooseButton.classList.add("StyleHover");
 chooseButton.addEventListener('click', () => fileInput.click());
 
 let cropButton = document.createElement("button"); // Crop Image Button
 cropButton.textContent = "Crop Image";
 cropButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
-cropButton.id = 'cropButton';
+cropButton.classList.add("StyleHover");
 cropButton.disabled = true;
 
 let saveButton = document.createElement("button"); // Save Image Button
 saveButton.textContent = "Save Image";
 saveButton.style.cssText = "width:250px; height: 40px; border-radius: 5px; margin-top: 20px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
-saveButton.id = 'saveButton';
+saveButton.classList.add("StyleHover");
 saveButton.disabled = true;
 
 let selectFilter = document.createElement('select'); // Select Filter Dropdown
 selectFilter.disabled = true;
 selectFilter.setAttribute("class", "form-select");
 selectFilter.style.cssText = "width:250px; height: 40px; margin-top: 20px; border-radius: 5px; box-shadow: 0px 0px 3px 1px #808080; background-color: #c080e9 ; color: white; border: 2px solid black; font-size: 18px; cursor:pointer;";
-cropButton.id = 'cropButton';
+selectFilter.classList.add("StyleHover");
 
-var style = document.createElement('style');
-style.innerHTML = `
-  #selectFilterButton:hover,
-  #saveButton:hover,
-  #cropButton:hover {
-    background-color: red;
-  }
+let mainFeedStyle = document.createElement('style');
+mainFeedStyle.innerHTML = `
+    .StyleHover:hover {
+        background-color: #ff0000;
+        border: 2px solid black;
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        transition: ease-out;
+    }
 `;
-
-mainDiv.appendChild(style);
+document.head.appendChild(mainFeedStyle);
 
 
 let rangeInput = document.createElement('input'); // Range Button

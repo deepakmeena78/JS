@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meena</title>
+</head>
+
+<body id="body">
+
+</body>
+<script>
+    // 4. write a js function to change the background color of body element every 5 seconds
+
+    function getRandomColor() {
+        let letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+
+        var set = setInterval(function () {
+            document.getElementById("body").style.background = getRandomColor();
+        }, 1000);
+    }
+    function stopSet() {
+        clearInterval(set);
+    }
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<script>
+
+    // 3. write a check function, which takes a callback function as argument to read username, if
+    // username is equal to "Infobeans" then only call setTimeout function to accept password
+    // after a delay of 2 sec, If password is 1234 then show a welcome message in an alert box.
+    // For any other user invalid message needs to be shown
+
+    let name = prompt("Enter Name");
+
+    if (name === "infobeans") {
+        setTimeout(function () {
+            let pass = prompt("Enter Password");
+            if (pass == 1234) {
+                alert("SuccessFully Login");
+            }
+            else {
+                alert("Invalide Password");
+            }
+        }, 5000);
+    }
+    else {
+        alert("Invalide UserName")
+    }
+</script>
