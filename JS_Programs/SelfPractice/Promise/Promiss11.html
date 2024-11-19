@@ -1,0 +1,15 @@
+<script>
+    async function First() {
+        try {
+            let GetData = await fetch('https://jsonplaceholder.typicode.com/users');
+            let jjs = await GetData.json();
+            console.log(jjs);
+        } catch (error) {
+            console.log("Error A Gai Yaar", error);
+        } finally {
+            console.log("Chalega Hi");
+        }
+    }
+
+    First();
+</script>

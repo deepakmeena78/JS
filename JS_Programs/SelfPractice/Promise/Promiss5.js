@@ -11,8 +11,8 @@ const p = new Promise(function (resolve, rejet) {
 });
 
 try {
-    async function sam(){
-        const temp =  await p
+    async function sam() {
+        const temp = await p
         console.log(temp);
     }
 } catch (error) {
@@ -20,9 +20,9 @@ try {
 }
 sam();
 
-async function alluser(){
+async function alluser() {
     const a = await fetch('https://jsonplaceholder.typicode.com/users')
     const data = a.json()
-    console.log(data);   
+    console.log(data);
 }
 alluser()
