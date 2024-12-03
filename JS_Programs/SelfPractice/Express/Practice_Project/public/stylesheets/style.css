@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: aliceblue;
+    background-color: black;
+    margin-top: 20px;
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+    background-color: red;
+}

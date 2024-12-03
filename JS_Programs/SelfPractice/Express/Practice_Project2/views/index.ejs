@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Practice Project Level</title>
+</head>
+
+<body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+        <div class="form p-10 text-white">
+            <form action="/create" method="post">
+                <input class="black w-full rounded-md outline-none px-5 py-2 bg-zinc-800" type="text"
+                    placeholder="Enter Title" name="title">
+                <textarea class="black w-full rounded-md outline-none px-5 py-2 mt-2 resize-none bg-zinc-800"
+                    placeholder="Enter Task" name="details"></textarea>
+                <input class="mt-2 bg-blue-600 px-5 py-2 rounded-md" type="submit" value="Create Task">
+            </form>
+        </div>
+        <div class="Tasks p-10 flex gap-3 flex-wrap p-10">
+            <% if(files.length> 0){ %>
+                <% files.forEach(function(val){ %>
+                    <div class="Task w-72 px-3 py-4 bg-zinc-800 rounded-md">
+                        <h1 class="text-white text-3xl tracking-tighter">
+                            <%= val %>
+                        </h1>
+                        <a class="text-blue-500 inline-block mt-3">Read More..</a>
+                    </div>
+                    <div class="Task w-72 px-3 py-4 bg-zinc-800 rounded-md">
+                        <h1 class="text-white text-3xl tracking-tighter">
+                            <%= val %>
+                        </h1>
+                        <a class="text-blue-500 inline-block mt-3">Read More..</a>
+                    </div>
+                    <div class="Task w-72 px-3 py-4 bg-zinc-800 rounded-md">
+                        <h1 class="text-white text-3xl tracking-tighter">
+                            <%= val %>
+                        </h1>
+                        <a class="text-blue-500 inline-block mt-3">Read More..</a>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <h1 class="text-zinc-600">No Tasks Yet..</h1>
+                            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -2,23 +2,23 @@
 let mainDiv = document.getElementById('main');
 mainDiv.setAttribute("style", "display: flex; justify-content: center; align-items: center; height: 100vh; position: relative;");
 
-// window.addEventListener('load', () => {
-//     const loader = document.querySelector('.loader');
-//     const mainDiv = document.getElementById("main");
-//     const loadingType = document.createElement('h1');
-//     loadingType.innerHTML = "Loading...";
-//     loadingType.style.cssText = "text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin-bottom: 100px; color: white";
-//     loader.appendChild(loadingType);
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    const mainDiv = document.getElementById("main");
+    const loadingType = document.createElement('h1');
+    loadingType.innerHTML = "Loading...";
+    loadingType.style.cssText = "text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin-bottom: 100px; color: white";
+    loader.appendChild(loadingType);
 
-//     loader.style.cssText = "border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px;";
+    loader.style.cssText = "border: 2px solid black; display: flex; justify-content: center; align-items: center; border-radius: 10px;";
 
-//     mainDiv.style.display = 'none';
+    mainDiv.style.display = 'none';
 
-//     setTimeout(() => {
-//         loader.style.display = 'none';
-//         mainDiv.style.display = 'flex';
-//     }, 5000);
-// });
+    setTimeout(() => {
+        loader.style.display = 'none';
+        mainDiv.style.display = 'flex';
+    }, 5000);
+});
 
 
 // Mini Div
@@ -232,6 +232,30 @@ let filters = [
     { value: "saturate", text: "Saturation", min: 0, max: 300, default: 100 },
     { value: "sepia", text: "Sepia", min: 0, max: 100, default: 0 }
 ];
+
+// let filters = [
+//     { value: "none", text: "No Filter", min: 0, max: 100, default: 0 },
+//     { value: "blur", text: "Blur", min: 0, max: 20, default: 0 },
+//     { value: "brightness", text: "Brightness", min: 0, max: 300, default: 100 },
+//     { value: "contrast", text: "Contrast", min: 0, max: 300, default: 100 },
+//     { value: "drop-shadow", text: "DropShadow", min: 0, max: 100, default: 0 },
+//     { value: "grayscale", text: "Grayscale", min: 0, max: 100, default: 0 },
+//     { value: "hue-rotate", text: "HueRotate", min: 0, max: 360, default: 0 },
+//     { value: "invert", text: "Invert", min: 0, max: 100, default: 0 },
+//     { value: "opacity", text: "Opacity", min: 0, max: 100, default: 100 },
+//     { value: "saturate", text: "Saturate", min: 0, max: 300, default: 100 },
+//     { value: "sepia", text: "Sepia", min: 0, max: 100, default: 0 },
+//     { value: "clip-path", text: "Clip Path (Shape)", min: 0, max: 100, default: 0 },
+//     { value: "perspective", text: "Perspective", min: 0, max: 2000, default: 0 },
+//     { value: "skewX", text: "Skew X", min: 0, max: 360, default: 0 },
+//     { value: "skewY", text: "Skew Y", min: 0, max: 360, default: 0 },
+//     { value: "transform", text: "Transform (Scale/Rotate)", min: 0, max: 2, default: 1 },
+//     { value: "rotateX", text: "Rotate X", min: 0, max: 360, default: 0 },
+//     { value: "rotateY", text: "Rotate Y", min: 0, max: 360, default: 0 },
+//     { value: "translateX", text: "Translate X", min: -500, max: 500, default: 0 },
+//     { value: "translateY", text: "Translate Y", min: -500, max: 500, default: 0 },
+// ];
+
 
 filters.forEach(f => {
     let option = document.createElement('option'); // Loop Help Object In option

@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  /* Button Styling */
+  .animated-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background: #529e27;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .animated-button:hover {
+    transform: scale(1.1);
+    background-color: #13853c;
+  }
+
+  /* Floating Box Styling */
+  .floating-box {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(10, 10, 10);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 1s infinite ease-in-out;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(-50%, -50%) translateY(-200px);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateY(250px);
+    }
+  }

@@ -1,0 +1,80 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Header */
+  header {
+    background: #b1d7a3;
+    color: rgb(0, 0, 0);
+    padding: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  /* Animation Container */
+  .animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    gap: 30px;
+  }
+  
+  /* Animated Box */
+  .box {
+    width: 100px;
+    height: 100px;
+    background: #6a0572;
+    animation: bounce 1s infinite;
+    border-radius: 8px;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(200px);
+    }
+    50% {
+      transform: translateY(-200px);
+    }
+  }
+  
+  /* Animated Circle */
+  .circle {
+    width: 100px;
+    height: 100px;
+    background: #7bf1a8;
+    border-radius: 50%;
+    animation: rotate 1s infinite linear;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Footer */
+  footer {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  
