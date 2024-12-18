@@ -8,10 +8,18 @@
 </head>
 
 <body>
-
+    <h1>Meena</h1>
 </body>
 <script>
-    console.log(-10 / 0); 
+    console.log(document.cookie);
+    document.cookie = "Deepakmeenaa78"
+    console.log(document.cookie);
+    let key = prompt("Enetr Your Key");
+    let value = prompt("Enter Your Value");
+    document.cookie = `${encodeURIComponent(key)}  : = :  ${encodeURIComponent(value)}`;
+    console.log(decodeURIComponent(`${key} :=: ${value}`));
+
+
 </script>
 
 </html>
