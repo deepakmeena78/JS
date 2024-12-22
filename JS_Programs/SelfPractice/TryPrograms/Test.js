@@ -16,7 +16,7 @@ console.log(true);           //  true
 
 console.log(+true);          //  1
 
-// console.log(true +);          //  Error
+console.log(true +);          //  Error
 
 console.log("");             //  Empty
 
