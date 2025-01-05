@@ -1,4 +1,4 @@
-import http from "http";
+const http = require("http");
 const server = http.createServer((request, response) => {
     if (request.url == "/1") {
         response.write("<h1>1 Page</h1>");

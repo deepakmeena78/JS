@@ -1,37 +1,3 @@
-// const express = require("express");
-// const app = express();
-
-// const userModel = require("./router/usermodel");
-// const { model } = require("mongoose");
-// app.get("/", (req, res) => {
-//     res.send("Meena JI ");
-// });
-
-// app.get("/create", async (req, res) => {
-//     let createUser = await userModel.create({
-//         name: "Ankit",
-//         email: "dm2000353@gmail.com",
-//         username: "Akki"
-//     });
-//     res.send(createUser);
-// });
-
-// app.get("/update", async (req, res) => {
-//     let updateUser = await userModel.findOneAndUpdate({ username: "Akki" }, { name: "Deepak" }, { new: true });
-//     res.send(updateUser);
-// });
-
-// app.get("/read", async (req, res) => {
-//     let readUser = await userModel.find();
-//     res.send(readUser);
-// });
-
-// app.listen(3100, () => {
-//     console.log("SuccessFully Run : ");
-// });
-
-//-------------------------------------------------------
-
 const express = require("express");
 const path = require("path");
 const userModel = require("./models/user");
@@ -46,15 +12,39 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.get("/read", (req, res) => {
-    res.render("read");
+app.get("/read", async (req, res) => {
+    let users = await userModel.find();
+    res.render("read", { users });
 });
 
-app.post("/create", (req, res) => {
-    let { name, email, imageurl } = req.body;
-    res.render("index");
+app.get("/edit/:userid", async (req, res) => {
+    let user = await userModel.findOne({ _id: req.params.userid });
+    res.render("edit", { user });
+});
+
+app.post("/update/:userid", async (req, res) => {
+    let { image, name, email } = req.body
+    let user = await userModel.findOneAndUpdate({ _id: req.params.userid }, { image, name, email }, { new: true });
+    res.redirect("/read");
+});
+
+app.get("/delete/:id", async (req, res) => {
+    let user = await userModel.findOneAndDelete({ _id: req.params.id });
+    res.redirect("/read");
+});
+
+app.post("/create", async (req, res) => {
+    let { name, email, image } = req.body;
+    let CreatedUser = await userModel.create({
+        name,
+        email,
+        image
+    });
+
+    res.redirect("/read");
 });
 
 app.listen(3100, () => {
     console.log("Sussec Run");
 });
+    

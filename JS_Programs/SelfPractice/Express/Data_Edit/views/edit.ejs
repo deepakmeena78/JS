@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Practice</title>
+    <title>Update User</title>
 </head>
 
 <body>
@@ -14,15 +14,16 @@
         <div class="nav mb-10">
             <a class="text-blue-500" href="/read">Read Users</a>
         </div>
-        <form action="/create" method="post">
-            <h1 class="text-3xl tracking-lighter mb-3">Create User</h1>
+        <form action="/update/<%= user._id %>" method="post">
+            <h1 class="text-3xl tracking-lighter mb-3">Update User</h1>
             <input class="px-5 py-2 border border-zinc-800 outline-none rounded-lg bg-transparent mb-3" type="text"
-                name="name" placeholder="Name">
+                name="name" placeholder="Name" value="<%= user.name %>">
             <input class="px-5 py-2 border border-zinc-800 outline-none rounded-lg bg-transparent mb-3" type="email"
-                name="email" placeholder="Email">
+                name="email" placeholder="Email" value="<%= user.email %>">
             <input class="px-5 py-2 border border-zinc-800 outline-none rounded-lg bg-transparent mb-3" type="url"
-                name="image" placeholder="Image Url">
-            <input class="px-5 py-2 bg-blue-500 rounded-lg cursor-pointer" type="submit" value="Create User">
+                name="image" placeholder="Image Url" value="<%= user.image %>">
+            <input class="px-5 py-2 bg-yellow-500 text-black rounded-lg cursor-pointer" type="submit"
+                value="Update User">
         </form>
     </div>
 </body>
