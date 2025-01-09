@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <% if(userDAta !="" ){ %>
+        <% userDAta.forEach((userDAta, index)=> { %>
+            <h3>Name : <%= userDAta.name %>
+            </h3>
+            <h3>Email : <%= userDAta.email %>
+            </h3>
+            <h3>Password : <%= userDAta.password %>
+            </h3>
+            <a style="color: rgb(61, 120, 32); font-size: 30px;" href="/create">add User</a>
+            <br>
+            <a style="color: rgb(22, 35, 173); font-size: 30px;" href="/edit/<%= userDAta._id %>">Update</a>
+            <br>
+            <a style="color: rgb(204, 0, 0); font-size: 30px;" href="/delete/<%= userDAta._id %>">Delete</a>
+            <hr>
+            <% }) } else { %>
+                <a style="color: rgb(61, 120, 32); font-size: 30px;" href="/create">add User</a>
+                <% }%>
 </body>
+
 </html>

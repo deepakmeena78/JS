@@ -15,7 +15,7 @@ app.get("/", async (req, res) => {
 
 app.get("/register", (req, res) => {
     res.render("register");
-});
+}); 
 
 app.post("/register", async (req, res) => {
     const { name, email, password } = req.body;

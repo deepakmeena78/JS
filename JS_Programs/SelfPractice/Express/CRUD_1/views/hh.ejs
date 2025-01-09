@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <% if(yo.length> 0) { %>
+        <% yo.forEach((yo, index)=> { %>
+            <h1>Name: <%= yo.name %>
+            </h1>
+            <h1>Email: <%= yo.email %>
+            </h1>
+            <img src="<%= yo.image %>" alt="User's image">
+            <a style="color: aqua; font-size: 20px;" href="/create">Add user</a>
+            <a style="color: rgb(186, 25, 0); font-size: 20px;" href="/create/<%= yo._id%>">Update user</a>
+            <!-- <a style="color: rgb(73, 0, 209); font-size: 20px;" href="/create">Delete user</a> -->
+            <hr>
+            <% }); %>
+                <% } else { %>
+                    <p>No users found</p>
+                    <% } %>
+</body>
+
+</html>
