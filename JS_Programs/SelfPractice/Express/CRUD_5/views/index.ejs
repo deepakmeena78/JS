@@ -10,18 +10,19 @@
 <body>
     <% if(userDAta !="" ){ %>
         <% userDAta.forEach((userDAta , index)=>{ %>
-            <h1>Name : <%= userDAta.name %>
-            </h1>
-            <h1>Email : <%= userDAta.email %>
-            </h1>
-            <h1>Password : <%= userDAta.password %>
-            </h1>
-            <a style="color: blue; font-size: 30px;" href="/create"> Add User </a>
-            <a style="color: rgb(0, 163, 141); font-size: 30px;" href="/edit/<%= userDAta._id %>"> Update User </a>
-            <a style="color: rgb(255, 0, 0); font-size: 30px;" href="/delete/<%= userDAta._id %>"> Delete User </a>
+            <h3>Name : <%= userDAta.name %>
+            </h3>
+            <h3>Email : <%= userDAta.email %>
+            </h3>
+            <h3>Password : <%= userDAta.password %>
+            </h3>
+            <a style="color: blue; font-size: 20px;" href="/create"> Add User </a>
+            <a style="color: rgb(0, 163, 141); font-size: 20px;" href="/edit/<%= userDAta._id %>"> Update User </a>
+            <a style="color: rgb(255, 0, 0); font-size: 20px;" href="/delete/<%= userDAta._id %>"> Delete User </a>
+            <hr>
             <% }) %>
                 <% } else { %>
-                    <h1>Not User</h1>   
+                    <h1>Not User</h1>
                     <a style="color: blue; font-size: 30px;" href="/create">Add User</a>
                     <% } %>
 </body>

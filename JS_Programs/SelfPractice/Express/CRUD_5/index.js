@@ -29,7 +29,7 @@ app.get("/edit/:id", async (req, res) => {
     if (!edituser) {
         res.redirect("/");
     } else {
-        res.render("edit", { edituser: edituser });
+        res.render("edit", { userDAta: edituser });
     }
 });
 
