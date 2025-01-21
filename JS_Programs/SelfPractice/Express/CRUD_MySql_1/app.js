@@ -9,5 +9,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/user", userRouter);
 
 app.listen(1200, () => {
-    console.log("Server Starte");
+    console.log("Server Started");
 });
