@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./router/router");
-const bodyParser = require("body-parser");
 const app = express();
 
 mongoose.connect("mongodb://127.0.0.1:27017/CRUD_6")
