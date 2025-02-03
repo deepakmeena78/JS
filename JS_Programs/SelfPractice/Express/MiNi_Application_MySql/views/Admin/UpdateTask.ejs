@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <%-include("__bootstrap.ejs")%>
+</head>
+
+<body style="background-color:rgb(132, 207, 182);">
+    <%- include("__header.ejs")%>
+        <h1 style="display: flex; justify-content: center; align-items: center;">EDIT</h1>
+        <div class="container mt-4">
+            <form action="/task/edit-task" method="post">
+                <% for(let unit of data){ %>
+                    <input type="hidden" name="id" value="<%= unit.id %>">
+                    <div class="form-group">
+                        <input value="<%=unit.title%>"
+                            style="background-color: transparent; color: rgb(0, 0, 0); box-shadow: 5px 5px 5px gray;"
+                            name="title" type="text" placeholder="Enter task title" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description"
+                            style="background-color: transparent; color: rgb(0, 0, 0); box-shadow: 5px 5px 5px gray;"
+                            name="description" class="form-control"
+                            placeholder="Write task description"><%=unit.description%></textarea>
+                    </div>;
+                    <div class="form-group">
+                        <select
+                            style="background-color: transparent; color: rgb(0, 0, 0); box-shadow: 5px 5px 5px gray;"
+                            class="form-control" name="priorityId">
+                            <option style="color: black;" disabled selected>Select task priority</option>
+                            <option style="color: black;" value="high">High</option>
+                            <option style="color: black;" value="mid">Medium</option>
+                            <option style="color: black;" value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-flex justify-content-center align-items-center w-100">
+                        <button
+                            style="background-color: rgb(144, 196, 255); width: 40%; height:10%; border-radius: 5px;"
+                            type="submit">Save</button>
+                    </div>
+                    <%}%>
+            </form>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task List</title>
+    <%- include("__bootstrap.ejs") %> <!-- Make sure Bootstrap 4 is included -->
+</head>
+
+<body class="bg-info">
+    <div class="container-fluid">
+        <h2 class="text-center text-white my-4">Task List</h2>
+        <div class="row">
+            <% for (let unit of data) { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-warning text-dark text-center">
+                            <%= unit.date %>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Title: </b>
+                                <%= unit.title %>
+                            </h5>
+                            <p class="card-text"><b>Description: </b>
+                                <%= unit.description %>
+                            </p>
+                            <p class="card-text"><b>Priority: </b>
+                                <%= unit.priorityId %>
+                            </p>
+                            <a href="/admin/task-complete/<%=unit.id%>" class="btn btn-danger w-100">Complete</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,57 +1,92 @@
-import Task from "../models/task.model.js";
-import StatusCheck from "../models/TaskStatus.js";
-import Complete from "../models/completeTask.js";
+import Task from "../models/TaskSS.js";
+let task = new Task();
+
+export const AssignTask = (req, res) => {
+    return res.render("Admin/GiveTask.ejs");
+}
 
 export const TaskPage = (req, res) => {
-    res.render("TaskCreate.ejs");
+    res.render("Admin/CreateTasks.ejs");
 }
 
 export const CreateTask = (request, response) => {
     let { title, description, priorityId } = request.body;
     let date = new Date();
     date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    let taskin = new Task(title, description, date, priorityId);
-    taskin.insertTask()
+    task.CreateTask(title, description, date, priorityId)
         .then((value) => {
-            return response.status(200).json({ msg: "Data : ", value });  // Create Task 
+            return response.redirect("/task/view-task/all");  // Create Task 
         })
         .catch((errr) => {
-            return response.status(500).json({ msg: "ERROR : ", errr });
+            return response.render("Admin/Error.ejs");
         });
 }
 
-export const statusstatus = (req, res) => {
-    let tem = new StatusCheck();
-    tem.check()
-        .then((value) => {
-            res.render("ShowTask.ejs", { data: value }); // Render tasks on the page
-        })
-        .catch((err) => {
-            return res.status(500).json({ msg: "ERROR: Unable to fetch tasks", err });
-        });
-};
 
-export const Editstatus = (req, res) => {
-    const taskId = req.params.id;  
-    const newStatus = "complete"; 
-    let statusUpdate = new StatusCheck();
-    statusUpdate.updateStatus(taskId, newStatus)
+export const EditTask = (req, res) => {
+    const id = req.params.id;
+    task.edittask(id)
         .then((result) => {
-            res.redirect("/task/complete-task"); 
+            res.render("Admin/UpdateTask.ejs", { data: result });
         })
         .catch((err) => {
-            return res.status(500).json({ msg: "ERROR: Unable to update status", err });
+            return res.render("Admin/Error.ejs");
         });
-};
+}
+
+export const EditTaskData = (req, res) => {
+    const { id, title, description, priorityId } = req.body;
+    let date = new Date();
+    date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    task.edittaskdata(title, description, date, priorityId, id)
+        .then(() => {
+            res.redirect("/task/view-task/all");
+        })
+        .catch((rr) => {
+            return res.render("Admin/Error.ejs");
+        });
+}
+
+export const deleteTask = (req, res) => {
+    const id = req.params.id;
+    task.delete(id)
+        .then(() => {
+            res.redirect("/task/view-task/all");
+        })
+        .catch((err) => {
+            return res.render("Admin/Error.ejs");
+        });
+}
+
+export const ViewTask = (req, res) => {
+    const priority = req.params.priority;
+    if (priority === "all") {
+        task.showdata()
+            .then((tasks) => {
+                res.render("Admin/AllShowTask.ejs", { data: tasks });
+            })
+            .catch((tasks) => {
+                res.render("Admin/AllShowTask.ejs", { data: tasks });
+            });
+    } else {
+        task.ViewTasked(priority)
+            .then((tasks) => {
+                res.render("Admin/AllShowTask.ejs", { data: tasks });
+            })
+            .catch((tasks) => {
+                res.render("Admin/AllShowTask.ejs", { data: tasks });
+            });
+    }
+}
+
 
 
 export const CompleteTask = (req, res) => {
-    let data2 = new Complete();
-    data2.complete()
+    task.completeShow()
         .then((value) => {
-            res.render("CompleteTask.ejs", { data: value });
+            res.render("Admin/CompleteTask.ejs", { data: value });
         })
         .catch((rr) => {
-            return res.status(500).json({ msg: "ERRORR Good Yaar" });
+            return res.render("Admin/Error.ejs");
         });
 }

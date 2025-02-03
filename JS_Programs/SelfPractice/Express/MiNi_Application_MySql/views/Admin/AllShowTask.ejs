@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <%-include("__bootstrap.ejs")%>
+    <style>
+      .task-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 10px 10px 20px 10px rgba(0, 0, 0, 0.2) !important;
+      }
+
+      .task-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+    </style>
+</head>
+
+<body style="background-color:rgb(132, 207, 182);">
+  <%- include("__header.ejs")%>
+    <div class="d-flex mt-3">
+      <a href="/task/view-task/high" class="btn btn-outline-danger m-1" style=" width :100px">High</a>
+      <a href="/task/view-task/mid" class="btn btn-outline-warning m-1" style=" width :100px">Medium</a>
+      <a href="/task/view-task/low" class="btn btn-outline-success m-1" style=" width :100px">Low</a>
+      <a href="/task/view-task/all" class="btn btn-outline-secondary m-1" style=" width :100px">All</a>
+    </div>
+    <% if (Array.isArray(data) && data.length> 0) { %>
+      <div class="d-flex flex-wrap  md-2 container-fluid mt-4 p-4">
+        <% for(let unit of data){ %>
+          <div class="task-card m-3 mb-4" style="min-height: 60%; width: 30%; box-shadow: 5px 5px 5px 5px grey">
+            <div
+              class="bg-<%= unit.priorityId === 'high' ? 'danger' : unit.priorityId === 'mid' ? 'warning' : unit.priorityId === 'low' ? 'success' : 'primary' %> text-dark text-center p-2 fw-bold">
+              <%= unit.date %>
+            </div>
+            <div class="p-3">
+              <div class="fw-bold">Task title :</div>
+              <div class="mb-2">
+                <%= unit.title %>
+              </div>
+              <div class="text-wrap">
+                <b>Description : </b>
+                <br />
+                <span>
+                  <%= unit.description %>
+                </span>
+              </div>
+            </div>
+            <a href="/task/edit-task/<%=unit.id%>">
+              <button class="btn btn-success  m-1">Edit</button>
+            </a>
+            <a href="/task/delete-task/<%=unit.id%>">
+              <button class="btn btn-danger  m-1">Delete</button>
+            </a>
+          </div>
+          <%}%>
+      </div>
+      <%} else { %>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 15%;">
+          <h4 class="text-center text-muted">No Tasks Available</h4>
+        </div>
+        <% } %>
+</body>
+
+</html>
