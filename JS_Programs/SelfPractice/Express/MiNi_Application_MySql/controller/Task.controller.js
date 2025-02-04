@@ -1,8 +1,38 @@
-import Task from "../models/TaskSS.js";
+import Task from "../models/TaskSS.Module.js";
 let task = new Task();
 
+export const GetDataRole = (req, res) => {
+    let id = req.params.body;
+    task.getRole(id)
+        .then((value) => {
+            return res.render("Admin/Roles.ejs", { data: value });
+        })
+        .catch((err) => {
+            return res.redirect("/task/role");
+        });
+}
+
 export const AssignTask = (req, res) => {
-    return res.render("Admin/GiveTask.ejs");
+    task.GetRole()
+        .then((value) => {
+            return res.render("Admin/GiveTask.ejs", { data: value });     // Get User Role Data All
+        })
+        .catch(() => {
+            return res.redirect("/task/assign-task");
+        });
+}
+
+export const AssignTaskData = (req, res) => {
+    const { title, description, role, priorityId } = req.body;
+    let date = new Date();
+    date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    task.assinTask(title, description, priorityId, date, role)
+        .then(() => {
+            return res.redirect(`/task/role/${role}`);     // Get User Role Data All
+        })
+        .catch(() => {
+            return res.redirect("/task/assign-task");
+        });
 }
 
 export const TaskPage = (req, res) => {

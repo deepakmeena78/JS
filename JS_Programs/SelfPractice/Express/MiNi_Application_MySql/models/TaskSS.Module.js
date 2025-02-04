@@ -140,4 +140,55 @@ export default class Task {
             });
         });
     }
+
+    GetRole() {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = "SELECT * FROM user";
+                con.query(sql, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+    }
+
+    assinTask(title, description, priorityId, date, role) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, com) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = "INSERT INTO task_user (title, description, priorityId, date, role) VALUES (?,?,?,?,?)";
+                com.query(sql, [title, description, priorityId, date, role], (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                })
+            })
+        })
+    }
+
+    getRole(id) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = "SELECT * FROM user WHERE id = ?";
+                con.query(sql, [id], (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+    }
 }

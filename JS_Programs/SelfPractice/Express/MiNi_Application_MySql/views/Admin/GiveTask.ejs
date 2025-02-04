@@ -15,7 +15,7 @@
             <div class="container d-flex justify-content-center align-items-center" style="height:80vh">
                 <div class="" style="width:40%; height:auto; box-shadow: 10px 10px 10px grey; margin-top: 50px;">
                     <h5 class="bg-secondary p-2 text-center text-white">Assign Task</h5>
-                    <form class="p-2" method="post" action="/user/sign-up">
+                    <form class="p-2" method="post" action="/task/assign-task">
                         <div class="form-group">
                             <input style="background-color: transparent; box-shadow: 5px 5px 5px gray; color: black;"
                                 name="title" type="text" placeholder="Enter Title" class="form-control" />
@@ -27,33 +27,16 @@
                         <div class="form-group">
                             <select
                                 style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
-                                class="form-control" name="priorityId">
-                                <option style="color: black;" disabled selected>Select Name</option>
-                                <option style="color: black;" value="high">Rohan</option>
-                                <option style="color: black;" value="mid">Atul</option>
-                                <option style="color: black;" value="low">Tanmay</option>
-                                <option style="color: black;" value="low">Ajeet</option>
-                                <option style="color: black;" value="low">Vipin</option>
-                                <option style="color: black;" value="low">Karan</option>
-                                <option style="color: black;" value="low">Daksh</option>
-                                <option style="color: black;" value="low">Jayesh</option>
-                                <option style="color: black;" value="low">Sawan</option>
+                                class="form-control" name="role">
+                                <% for (let unit of data) { %>
+                                    <option style="color: black;" disabled selected>Select Domain</option>
+                                    <option value="<%= unit.id %>">
+                                        <%= unit.role %>
+                                    </option>
+                                    <% } %>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <select
-                                style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
-                                class="form-control" name="priorityId">
-                                <option style="color: black;" disabled selected>Select Role</option>
-                                <option style="color: black;" value="high">Developer</option>
-                                <option style="color: black;" value="mid">Data Analysts</option>
-                                <option style="color: black;" value="low">Coder</option>
-                                <option style="color: black;" value="low">ui developer</option>
-                                <option style="color: black;" value="low">ui ux designer</option>
-                                <option style="color: black;" value="low">engineer</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group">    
                             <select
                                 style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
                                 class="form-control" name="priorityId">

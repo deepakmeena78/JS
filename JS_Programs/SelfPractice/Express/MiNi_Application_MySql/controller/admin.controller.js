@@ -1,4 +1,4 @@
-import Admin from "../models/Admin.js";
+import Admin from "../models/Admin.Module.js";
 import bcrypt from "bcrypt";
 
 let admin = new Admin();
@@ -42,15 +42,22 @@ export const signInPage = async (req, res) => {
   if (!email || !password) {
     return res.redirect("/admin/sign-in");
   }
-  const matchdata = await bcrypt.hash(password, 10);
-  admin.SignInData(email, matchdata)
-    .then(() => {
-      return res.redirect("/admin/sign-in");
-    })
-    .catch(() => {
-      return res.redirect("/admin/sign-in");
-    });
+  try {
+    admin.SignInData(email, password)
+      .then((value) => {
+        const matchdata = bcrypt.compare(password, value.password);
+        if (matchdata) {
+          return res.redirect("/admin");
+        }
+      })
+      .catch(() => {
+        return res.redirect("/admin/sign-in");
+      });
+  } catch (err) {
+    console.log("Good Yaar 57 Line, controller");
+  }
 }
+
 
 
 export const signUp = async (request, response) => {
@@ -60,8 +67,8 @@ export const signUp = async (request, response) => {
   }
   const hashpassword = await bcrypt.hash(password, 10);
   admin.SignUpData(email, hashpassword)
-    .then((result) => {
-      return response.status(200).json({ msg: "SuccessFully Sign-Up : ", email, hashpassword });   // Sign Up to DataBase
+    .then(() => {
+      return response.redirect("/admin");   // Sign Up to DataBase
     })
     .catch((err) => {
       return response.render("Admin/Error.ejs");
