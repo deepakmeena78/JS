@@ -34,4 +34,21 @@ export default class User {
             });
         });
     }
+
+    getRole() {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = "SELECT * FROM label";
+                con.query(sql, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                })
+            })
+        })
+    }
 }

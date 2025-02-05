@@ -141,13 +141,13 @@ export default class Task {
         });
     }
 
-    GetRole() {
+    getlabel() {
         return new Promise((resolve, reject) => {
             pool.getConnection((err, con) => {
                 if (err) {
                     reject(err);
                 }
-                let sql = "SELECT * FROM user";
+                let sql = "SELECT * FROM label";
                 con.query(sql, (err, result) => {
                     if (err) {
                         reject(err);
@@ -175,14 +175,31 @@ export default class Task {
         })
     }
 
-    getRole(id) {
+    getRole(role) {
         return new Promise((resolve, reject) => {
             pool.getConnection((err, con) => {
                 if (err) {
                     reject(err);
                 }
-                let sql = "SELECT * FROM user WHERE id = ?";
-                con.query(sql, [id], (err, result) => {
+                let sql = "SELECT * FROM user WHERE role = ?";
+                con.query(sql, [role], (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+    }
+
+    InsertRole(name, title, description, priorityId, date, role) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = " UPDATE task_user SET name = ? WHERE title = ? AND description = ? AND priorityId = ? AND date = ? AND role = ?;";
+                con.query(sql, [name, title, description, priorityId, date, role], (err, result) => {
                     if (err) {
                         reject(err);
                     }

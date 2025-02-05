@@ -1,24 +1,25 @@
 import Task from "../models/TaskSS.Module.js";
 let task = new Task();
 
-export const GetDataRole = (req, res) => {
-    let id = req.params.body;
-    task.getRole(id)
+export const Assign = (req, res) => {
+    task.getlabel()
         .then((value) => {
-            return res.render("Admin/Roles.ejs", { data: value });
+            return res.render("Admin/GiveTask.ejs", { data: value });
         })
-        .catch((err) => {
-            return res.redirect("/task/role");
+        .catch((errrr) => {
+            console.log(errrr);
+            return res.redirect("/task/view-task/all");
         });
 }
 
-export const AssignTask = (req, res) => {
-    task.GetRole()
-        .then((value) => {
-            return res.render("Admin/GiveTask.ejs", { data: value });     // Get User Role Data All
+export const WhoDetails = (req, res) => {
+    let { title, description, priorityId, date, role, name } = req.body;
+    task.InsertRole(name, title, description, priorityId, date, role)
+        .then(() => {
+            return res.redirect("/task/view-task/all");
         })
         .catch(() => {
-            return res.redirect("/task/assign-task");
+            return res.redirect("/task/role");
         });
 }
 
@@ -28,7 +29,18 @@ export const AssignTaskData = (req, res) => {
     date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     task.assinTask(title, description, priorityId, date, role)
         .then(() => {
-            return res.redirect(`/task/role/${role}`);     // Get User Role Data All
+            return task.getRole(role);
+        })
+        .then((labelData) => {
+            const responseData = {
+                title,
+                description,
+                priorityId,
+                date,
+                role,
+                labelData
+            };
+            return res.render("Admin/Roles.ejs", { data: responseData });
         })
         .catch(() => {
             return res.redirect("/task/assign-task");

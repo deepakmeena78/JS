@@ -16,27 +16,31 @@
                 <div class="" style="width:40%; height:auto; box-shadow: 10px 10px 10px grey; margin-top: 50px;">
                     <h5 class="bg-secondary p-2 text-center text-white">Assign Task</h5>
                     <form class="p-2" method="post" action="/task/assign-task">
+
                         <div class="form-group">
                             <input style="background-color: transparent; box-shadow: 5px 5px 5px gray; color: black;"
                                 name="title" type="text" placeholder="Enter Title" class="form-control" />
                         </div>
+
                         <div class="form-group">
                             <input style="background-color: transparent; box-shadow: 5px 5px 5px gray; color: black;"
                                 name="description" type="text" placeholder="Enter description" class="form-control" />
                         </div>
+
                         <div class="form-group">
                             <select
                                 style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
                                 class="form-control" name="role">
+                                <option style="color: black;" disabled selected>Select Domain</option>
                                 <% for (let unit of data) { %>
-                                    <option style="color: black;" disabled selected>Select Domain</option>
                                     <option value="<%= unit.id %>">
-                                        <%= unit.role %>
+                                        <%= unit.label %>
                                     </option>
                                     <% } %>
                             </select>
                         </div>
-                        <div class="form-group">    
+
+                        <div class="form-group">
                             <select
                                 style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
                                 class="form-control" name="priorityId">
@@ -46,6 +50,7 @@
                                 <option style="color: black;" value="low">Low</option>
                             </select>
                         </div>
+
                         <div class="form-group d-flex justify-content-center">
                             <button style="box-shadow: 5px 5px 10px rgb(22, 100, 124);" type="submit"
                                 class="btn btn-primary m-1">Create</button>

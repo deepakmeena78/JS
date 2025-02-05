@@ -6,13 +6,17 @@ export const Home = (req, res) => {
 }
 
 export const signUpPage = (req, res) => {
-    return res.render("User/signUp.ejs");
+    user.getRole()
+        .then((value) => {
+            return res.render("User/signUp.ejs", { data: value });
+        })
+        .catch(() => {
+            return res.render("User/Error.ejs");
+        });
 }
 
 export const signUp = (req, res) => {
     const { name, email, password, role } = req.body;
-    // let date = new Date();
-    // date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     user.signUp(name, email, password, role)
         .then(() => {
             return res.redirect("/user");

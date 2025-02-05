@@ -12,19 +12,28 @@
 <body style="background-color:rgb(132, 207, 182); color: white;">
     <div class="container d-flex justify-content-center align-items-center" style="height:80vh">
         <div class="" style="width:40%; height:auto; box-shadow: 10px 10px 10px grey;">
-            <h5 class="bg-secondary p-2 text-center text-white">Sign In</h5>
-            <form class="p-2" method="post" action="/user/sign-in">
-                <% for (let unit of data) { %>
+            <h5 class="bg-secondary p-2 text-center text-white">Data</h5>
+            <form class="p-2" method="post" action="/task/who">
+                <input type="hidden" name="title" value="<%= data.title %>">
+                <input type="hidden" name="description" value="<%= data.description %>">
+                <input type="hidden" name="priorityId" value="<%= data.priorityId %>">
+                <input type="hidden" name="date" value="<%= data.date %>">
+                <input type="hidden" name="role" value="<%= data.role %>">
+
+                <select class="form-control" name="name"
+                    style="background-color: transparent; color: black; box-shadow: 5px 5px 10px gray;">
                     <option style="color: black;" disabled selected>Select Name</option>
-                    <option value="<%= unit.name %>">
-                        <%= unit.name %>
-                    </option>
+                    <% for (let unit of data.labelData) { %>
+                        <option value="<%= unit.name %>">
+                            <%= unit.name %>
+                        </option>
+                        <% } %>
+                </select>
+
+                <% for (let unit of data.labelData) { %>
+                    <input type="hidden" name="id" value="<%= unit.id %>">
                     <% } %>
-                        <div class="form-group">
-                            <input disabled
-                                style="background-color: transparent; color: black; box-shadow: 5px 5px 10px gray;"
-                                name="email" type="text" value="<%= unit.email>" class="form-control" />
-                        </div>
+
                         <div class="form-group d-flex justify-content-center">
                             <button style="box-shadow: 5px 5px 5px rgb(22, 100, 124);" type="submit"
                                 class="btn btn-primary m-1">Done</button>
