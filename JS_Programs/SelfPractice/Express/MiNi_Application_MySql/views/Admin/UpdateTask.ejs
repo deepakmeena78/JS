@@ -1,45 +1,68 @@
 <html>
 
 <head>
-    <%-include("__bootstrap.ejs")%>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<%-include("__bootstrap.ejs")%>
 
-<body style="background-color:rgb(132, 207, 182);">
-    <%- include("__header.ejs")%>
-        <h1 style="display: flex; justify-content: center; align-items: center;">EDIT</h1>
-        <div class="container mt-4">
-            <form action="/task/edit-task" method="post">
-                <% for(let unit of data){ %>
-                    <input type="hidden" name="id" value="<%= unit.id %>">
-                    <div class="form-group">
-                        <input value="<%=unit.title%>"
-                            style="background-color: transparent; color: rgb(0, 0, 0); box-shadow: 5px 5px 5px gray;"
-                            name="title" type="text" placeholder="Enter task title" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <textarea name="description"
-                            style="background-color: transparent; color: rgb(0, 0, 0); box-shadow: 5px 5px 5px gray;"
-                            name="description" class="form-control"
-                            placeholder="Write task description"><%=unit.description%></textarea>
-                    </div>;
-                    <div class="form-group">
-                        <select
-                            style="background-color: transparent; color: rgb(0, 0, 0); box-shadow: 5px 5px 5px gray;"
-                            class="form-control" name="priorityId">
-                            <option style="color: black;" disabled selected>Select task priority</option>
-                            <option style="color: black;" value="high">High</option>
-                            <option style="color: black;" value="mid">Medium</option>
-                            <option style="color: black;" value="low">Low</option>
-                        </select>
-                    </div>
-                    <div class="form-group d-flex justify-content-center align-items-center w-100">
-                        <button
-                            style="background-color: rgb(144, 196, 255); width: 40%; height:10%; border-radius: 5px;"
-                            type="submit">Save</button>
-                    </div>
-                    <%}%>
-            </form>
-        </div>
-</body>
+    <body style="background-color:rgb(132, 207, 182); color: white;">
+        <%- include("__header.ejs")%>
+            <div class="container d-flex justify-content-center align-items-center" style="height:80vh">
+                <div class="" style="width:40%; height:auto; box-shadow: 10px 10px 10px grey; margin-top: 50px;">
+                    <h5 class="bg-secondary p-2 text-center text-white">Assign Task</h5>
+                    <form class="p-2" method="post" action="/task/edit-task">
+
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="<%= data.task[0].id%>" />
+                        </div>
+                        <div class="form-group">
+                            <input value="<%= data.task[0].title%>"
+                                style="background-color: transparent; box-shadow: 5px 5px 5px gray; color: black;"
+                                name="title" type="text" placeholder="Enter Title" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <input value="<%= data.task[0].description%>"
+                                style="background-color: transparent; box-shadow: 5px 5px 5px gray; color: black;"
+                                name="description" type="text" placeholder="Enter description" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <select
+                                style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
+                                class="form-control" name="role">
+                                <option style="color: black;" disabled selected>Select Domain</option>
+                                <% for (let unit of data.labels) { %>
+                                    <option value="<%= unit.id %>">
+                                        <%= unit.label %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select
+                                style="background-color: transparent; color: rgb(85, 85, 85); box-shadow: 5px 5px 5px gray;"
+                                class="form-control" name="priorityId">
+                                <option style="color: black;" disabled selected>Select task priority</option>
+                                <option style="color: black;" value="high">High</option>
+                                <option style="color: black;" value="mid">Medium</option>
+                                <option style="color: black;" value="low">Low</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-center">
+                            <button style="box-shadow: 5px 5px 10px rgb(22, 100, 124);" type="submit"
+                                class="btn btn-primary m-1">Sava</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </body>
 
 </html>

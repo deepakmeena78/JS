@@ -77,14 +77,32 @@ export const EditTask = (req, res) => {
 }
 
 export const EditTaskData = (req, res) => {
-    const { id, title, description, priorityId } = req.body;
+    const { id, title, description, role, priorityId } = req.body;
     let date = new Date();
-    date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    task.edittaskdata(title, description, date, priorityId, id)
+    date = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();   //  Update Task
+    task.edittaskdata(title, description, priorityId, date, role, id)
         .then(() => {
-            res.redirect("/task/view-task/all");
+            return task.getRole(role);
         })
-        .catch((rr) => {
+        .then((labelData) => {
+            const responseData = {
+                id,
+                labelData
+            };
+            return res.render("Admin/Roles2.ejs", { data: responseData });
+        })
+        .catch(() => {
+            return res.redirect("/task/assign-task");
+        });
+}
+
+export const whoUpdate = (req, res) => {
+    const { imp, name } = req.body;
+    task.nameUpadte(name, imp)
+        .then(() => {
+            return res.redirect("/task/view-task/all");
+        })
+        .catch(() => {
             return res.render("Admin/Error.ejs");
         });
 }

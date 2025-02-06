@@ -51,4 +51,21 @@ export default class User {
             })
         })
     }
+
+    completetask(ID) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = "SELECT u.*, t.* FROM user u LEFT JOIN task_user t ON u.name = t.name WHERE u.id = ? AND t.status = 'pending'";
+                con.query(sql, [ID], (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                })
+            })
+        })
+    }
 }

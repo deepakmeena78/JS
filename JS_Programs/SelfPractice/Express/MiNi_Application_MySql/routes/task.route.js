@@ -1,9 +1,7 @@
 import express from "express";
-import { TaskPage, CreateTask, EditTask, EditTaskData, deleteTask, CompleteTask, ViewTask, AssignTaskData,Assign, WhoDetails } from "../controller/Task.controller.js";
+import { EditTask, EditTaskData, deleteTask, CompleteTask, ViewTask, AssignTaskData, Assign, WhoDetails, whoUpdate } from "../controller/Task.controller.js";
 const router = express.Router();
 
-router.get("/create-task", TaskPage);              // Task Page Show
-router.post("/create-task", CreateTask);           // New Task
 router.get("/edit-task/:id", EditTask);            // Edit Task
 router.post("/edit-task", EditTaskData);           // Edit Task Data Update
 router.get("/delete-task/:id", deleteTask);        // Delete Task
@@ -12,4 +10,6 @@ router.get("/view-task/:priority", ViewTask);      // View Task All
 router.post("/assign-task", AssignTaskData)         // Assign To DataBAse
 router.get("/assign-task", Assign)         // Assign To DataBAse
 router.post("/who", WhoDetails);                     // User Details
+router.post("/whoupdate", whoUpdate);                // User Update Set
+
 export default router;

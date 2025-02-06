@@ -19,7 +19,7 @@ export default class Admin {
             });
         });
     }
-
+            
     SignInData(email, password) {
         return new Promise((resolve, reject) => {
             pool.getConnection((err, con) => {

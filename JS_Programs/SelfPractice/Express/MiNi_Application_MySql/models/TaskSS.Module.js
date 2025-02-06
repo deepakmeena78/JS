@@ -1,11 +1,9 @@
 import pool from "../db/dbConfig.js";
 
-
-
 export default class Task {
     showdata() {
         return new Promise((resolve, reject) => {
-            const sql = "SELECT * FROM task";
+            const sql = "SELECT * FROM task_user WHERE status = 'pending'";  // Done
             pool.query(sql, (err, result) => {
                 if (err) {
                     console.log("Query Error:", err);
@@ -22,7 +20,7 @@ export default class Task {
 
     ViewTasked(priorityId) {
         return new Promise((resolve, reject) => {
-            const query = "SELECT * FROM task WHERE priorityId = ?";
+            const query = "SELECT * FROM task_user WHERE priorityId = ?";    // Done
             pool.query(query, [priorityId], (err, result) => {
                 if (err) {
                     return reject(err);
@@ -42,7 +40,7 @@ export default class Task {
                 if (err) {
                     reject(err);
                 }
-                let sql = "SELECT * FROM task WHERE status = 'pending'";
+                let sql = "SELECT * FROM task_user WHERE status = 'pending'";   // Pending
                 con.query(sql, (err, result) => {
                     if (err) {
                         reject(err);
@@ -51,26 +49,6 @@ export default class Task {
                 })
             })
         })
-
-
-    }
-
-    CreateTask(title, description, date, priorityId) {
-        return new Promise((resolve, reject) => {
-            pool.getConnection((err, con) => {
-                if (err) {
-                    reject(err);
-                }
-                let sql = "INSERT INTO task (title, description, date, priorityId) VALUES (?,?,?,?)";
-                con.query(sql, [title, description, date, priorityId], (err, result) => {
-                    console.log(title, description, date, priorityId);
-                    if (err) {
-                        reject(err);
-                    }
-                    resolve(result);
-                });
-            });
-        });
     }
 
     completeShow() {
@@ -79,7 +57,7 @@ export default class Task {
                 if (err) {
                     reject(err);
                 }
-                let sql = "SELECT * FROM task WHERE status = 'complete'";
+                let sql = "SELECT * FROM task_user WHERE status = 'complete'";   // pending
                 con.query(sql, (err, result) => {
                     if (err) {
                         reject(err);
@@ -94,10 +72,38 @@ export default class Task {
         return new Promise((resolve, reject) => {
             pool.getConnection((err, con) => {
                 if (err) {
+                    return reject(err);
+                }
+                let sql1 = "SELECT * FROM task_user WHERE id = ?";
+                let sql2 = "SELECT * FROM label";
+                con.query(sql1, [id], (err, taskResult) => {
+                    if (err) {
+                        con.release();
+                        return reject(err);
+                    }
+                    con.query(sql2, (err, labelResult) => {
+                        if (err) {
+                            return reject(err);
+                        }
+                        resolve({
+                            task: taskResult,
+                            labels: labelResult
+                        });
+                    });
+                });
+            });
+        });
+    }
+
+
+    edittaskdata(title, description, priorityId, date, role, id) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
                     reject(err);
                 }
-                let sql = "SELECT * FROM task WHERE id = ?";
-                con.query(sql, [id], (err, result) => {
+                let sql = "UPDATE task_user SET title = ?, description = ?, priorityId = ?, date = ?, role = ? WHERE id = ?";
+                con.query(sql, [title, description, priorityId, date, role, id], (err, result) => {
                     if (err) {
                         reject(err);
                     }
@@ -107,14 +113,14 @@ export default class Task {
         });
     }
 
-    edittaskdata(title, description, date, priorityId, id) {
+    nameUpadte(name, imp) {
         return new Promise((resolve, reject) => {
             pool.getConnection((err, con) => {
                 if (err) {
                     reject(err);
                 }
-                let sql = "UPDATE task SET title = ?, description = ?, date = ?, priorityId = ? WHERE id = ?";
-                con.query(sql, [title, description, date, priorityId, id], (err, result) => {
+                let sql = "UPDATE task_user SET name = ? WHERE id = ?";
+                con.query(sql, [name, imp], (err, result) => {
                     if (err) {
                         reject(err);
                     }
@@ -123,6 +129,7 @@ export default class Task {
             });
         });
     }
+
 
     delete(id) {
         return new Promise((resolve, reject) => {
@@ -130,7 +137,7 @@ export default class Task {
                 if (err) {
                     reject(err);
                 }
-                let sql = "DELETE FROM task WHERE id = ?";
+                let sql = "DELETE FROM task_user WHERE id = ?";
                 con.query(sql, [id], (err, result) => {
                     if (err) {
                         reject(err);

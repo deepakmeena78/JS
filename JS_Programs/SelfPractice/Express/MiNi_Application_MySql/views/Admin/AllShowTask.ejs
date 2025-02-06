@@ -28,21 +28,29 @@
     <% if (Array.isArray(data) && data.length> 0) { %>
       <div class="d-flex flex-wrap  md-2 container-fluid mt-4 p-4">
         <% for(let unit of data){ %>
-          <div class="task-card m-3 mb-4" style="min-height: 60%; width: 30%; box-shadow: 5px 5px 5px 5px grey">
+          <div class="task-card m-3 mb-4" style="min-height: 60%; width: 30%; box-shadow: 5px 5px 5px 5px grey; padding: 10px;">
             <div
               class="bg-<%= unit.priorityId === 'high' ? 'danger' : unit.priorityId === 'mid' ? 'warning' : unit.priorityId === 'low' ? 'success' : 'primary' %> text-dark text-center p-2 fw-bold">
               <%= unit.date %>
             </div>
-            <div class="p-3">
-              <div class="fw-bold">Task title :</div>
-              <div class="mb-2">
+            <div class="text-wrap">
+              <b>Title : </b>
+              <br />
+              <span>
                 <%= unit.title %>
-              </div>
+              </span>
               <div class="text-wrap">
                 <b>Description : </b>
                 <br />
                 <span>
                   <%= unit.description %>
+                </span>
+              </div>
+              <div class="text-wrap">
+                <b>Name : </b>
+                <br />
+                <span>
+                  <%= unit.name %>
                 </span>
               </div>
             </div>
