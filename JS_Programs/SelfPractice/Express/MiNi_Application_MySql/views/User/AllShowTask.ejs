@@ -19,16 +19,11 @@
 
 <body style="background-color:rgb(132, 207, 182);">
   <%- include("__header.ejs")%>
-    <div class="d-flex mt-3">
-      <a href="/task/view-task/high" class="btn btn-outline-danger m-1" style=" width :100px">High</a>
-      <a href="/task/view-task/mid" class="btn btn-outline-warning m-1" style=" width :100px">Medium</a>
-      <a href="/task/view-task/low" class="btn btn-outline-success m-1" style=" width :100px">Low</a>
-      <a href="/task/view-task/all" class="btn btn-outline-secondary m-1" style=" width :100px">All</a>
-    </div>
     <% if (Array.isArray(data) && data.length> 0) { %>
       <div class="d-flex flex-wrap  md-2 container-fluid mt-4 p-4">
         <% for(let unit of data){ %>
-          <div class="task-card m-3 mb-4" style="min-height: 60%; width: 30%; box-shadow: 5px 5px 5px 5px grey">
+          <div class="task-card m-3 mb-4"
+            style="background-color:  rgb(255, 198, 184); min-height: 60%; width: 30%; box-shadow: 5px 5px 5px 5px grey">
             <div
               class="bg-<%= unit.priorityId === 'high' ? 'danger' : unit.priorityId === 'mid' ? 'warning' : unit.priorityId === 'low' ? 'success' : 'primary' %> text-dark text-center p-2 fw-bold">
               <%= unit.date %>
@@ -46,11 +41,8 @@
                 </span>
               </div>
             </div>
-            <a href="/task/edit-task/<%=unit.id%>">
-              <button class="btn btn-success  m-1">Edit</button>
-            </a>
-            <a href="/task/delete-task/<%=unit.id%>">
-              <button class="btn btn-danger  m-1">Delete</button>
+            <a href="/user/complete-set/<%=unit.id%>">
+              <button class="btn btn-success  m-1">Complete</button>
             </a>
           </div>
           <%}%>

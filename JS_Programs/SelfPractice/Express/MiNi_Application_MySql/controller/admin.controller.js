@@ -1,3 +1,4 @@
+import { request } from "express";
 import Admin from "../models/Admin.Module.js";
 import bcrypt from "bcrypt";
 
@@ -47,6 +48,8 @@ export const signInPage = async (req, res) => {
       .then((value) => {
         const matchdata = bcrypt.compare(password, value.password);
         if (matchdata) {
+          // req.session.isLoggedIn = true;
+          // req.session.email = email;
           return res.redirect("/admin");
         }
       })

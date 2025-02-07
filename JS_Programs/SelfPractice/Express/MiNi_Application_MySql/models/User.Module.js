@@ -58,7 +58,7 @@ export default class User {
                 if (err) {
                     reject(err);
                 }
-                let sql = "SELECT u.*, t.* FROM user u LEFT JOIN task_user t ON u.name = t.name WHERE u.id = ? AND t.status = 'pending'";
+                let sql = "SELECT u.*, t.* FROM user u LEFT JOIN task_user t ON u.name = t.name WHERE u.id = ? AND t.status = 'completed'";
                 con.query(sql, [ID], (err, result) => {
                     if (err) {
                         reject(err);
@@ -67,5 +67,40 @@ export default class User {
                 })
             })
         })
+    }
+
+    pendingtask(id) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    reject(err);
+                }
+                let sql = "SELECT task_user.* FROM task_user JOIN user ON task_user.name = user.name WHERE task_user.status = 'pending' AND user.id = ?;";
+                con.query(sql, [id], (err, result) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+    }
+
+    statusChange(id) {
+        return new Promise((resolve, reject) => {
+            pool.getConnection((err, con) => {
+                if (err) {
+                    return reject(err);
+                }
+                let sql = "UPDATE task_user SET status = 'completed' WHERE id = ?";
+                con.query(sql, [id], (err, result) => {
+                    con.release();
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
     }
 }

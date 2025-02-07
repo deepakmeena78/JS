@@ -1,6 +1,6 @@
-let ID = 0;
 import User from "../models/User.Module.js";
-import fs from "fs";
+import jwt from "jsonwebtoken";
+
 let user = new User();
 
 export const Home = (req, res) => {
@@ -38,8 +38,9 @@ export const SignIn = (req, res) => {
     user.signin(email, password)
         .then((value) => {
             if (value.length !== 0) {
-                ID = value[0].id;
-                fs.appendFileSync("id.txt", `${id}\n`, 'utf-8'); // Sign - In
+                let id = value[0].id;
+                let token = jwt.sign({ id: id }, "email");
+                res.cookie("token", token) // Sign - In
                 return res.redirect("/user");
             }
             return res.render("User/signIn.ejs");
@@ -51,10 +52,32 @@ export const SignIn = (req, res) => {
 
 
 export const completeTask = (req, res) => {
-    const ID = fs.readFileSync(filePath, 'utf-8');
-    user.completetask(ID)
+    let { id } = jwt.verify(req.cookies.token, "email");
+    user.completetask(id)
         .then((value) => {
             return res.render("User/CompleteTask.ejs", { data: value });
+        })
+        .catch(() => {
+            return res.status(401).json({ msg: "Some Issue" });
+        });
+}
+
+export const MytaskView = (req, res) => {
+    let { id } = jwt.verify(req.cookies.token, "email");
+    user.pendingtask(id)
+        .then((value) => {
+            return res.render("User/AllShowTask.ejs", { data: value });
+        })
+        .catch(() => {
+            return res.status(401).json({ msg: "Some Issue" });
+        });
+}
+
+export const CompletedSet = (req, res) => {
+    let id = req.params.id;
+    user.statusChange(id)
+        .then(() => {
+            return res.redirect("/user/my-task");
         })
         .catch(() => {
             return res.status(401).json({ msg: "Some Issue" });

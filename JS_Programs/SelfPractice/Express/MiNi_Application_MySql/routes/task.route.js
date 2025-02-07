@@ -1,5 +1,6 @@
 import express from "express";
 import { EditTask, EditTaskData, deleteTask, CompleteTask, ViewTask, AssignTaskData, Assign, WhoDetails, whoUpdate } from "../controller/Task.controller.js";
+import { auth } from "../middlewares/auth.js";
 const router = express.Router();
 
 router.get("/edit-task/:id", EditTask);            // Edit Task
