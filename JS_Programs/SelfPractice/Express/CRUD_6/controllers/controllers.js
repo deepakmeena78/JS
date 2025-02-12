@@ -12,7 +12,6 @@ const signUp = async (req, res, next) => {
         if (existUser) {
             return res.status(400).json({ msg: "User already registered" });
         }
-
         const hashPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ name, email, password: hashPassword });
         await newUser.save();
@@ -31,7 +30,6 @@ const signIn = async (req, res, next) => {
         if (!user) {
             return res.status(400).json({ msg: "User not found" });
         }
-
         const matchData = await bcrypt.compare(password, user.password);
         if (matchData) {
             const token = jwt.sign({ id: user._id }, "your secret key", { expiresIn: "1h", });
