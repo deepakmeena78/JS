@@ -77,3 +77,4 @@ export const signUp = async (request, response) => {
       return response.render("Admin/Error.ejs");
     });
 }
+

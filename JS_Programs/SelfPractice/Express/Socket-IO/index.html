@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #chat {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow-y: auto;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        #messageInput {
+            width: 200px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Chat Application</h2>
+    
+    <input type="text" id="username" placeholder="Enter your name">
+    <br><br>
+    <div id="chat"></div>
+    <input type="text" id="messageInput" placeholder="Type a message">
+    <button onclick="sendMessage()">Send</button>
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        const socket = io("http://localhost:5000");
+
+        socket.on("receiveMessage", (data) => {
+            const chat = document.getElementById("chat");
+            const msgElement = document.createElement("p");
+            msgElement.innerHTML = `<strong>${data.username}:</strong> ${data.message}`;
+            chat.appendChild(msgElement);
+            chat.scrollTop = chat.scrollHeight;
+        });
+
+        function sendMessage() {
+            const username = document.getElementById("username").value;
+            const message = document.getElementById("messageInput").value;
+
+            if (!username || !message) {
+                alert("Please enter your name and a message.");
+                return;
+            }
+
+            socket.emit("sendMessage", { username, message });
+            document.getElementById("messageInput").value = "";
+        }
+    </script>
+</body>
+</html>

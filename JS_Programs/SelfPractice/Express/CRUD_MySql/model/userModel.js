@@ -22,8 +22,6 @@ const User = Sequelize.define("user", {
             this.setDataValue("password", ecryptPasswod);
         }
     },
-
-    
     email: {
         type: DataTypes.STRING,
         allowNull: false,

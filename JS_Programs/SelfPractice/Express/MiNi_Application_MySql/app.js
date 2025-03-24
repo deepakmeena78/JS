@@ -8,7 +8,7 @@ import session from "express-session";
 const app = express();
 
 app.set("view engine", "ejs");
-app.use(session({secret : "sfidafgrtvfgi" , saveUninitialized : true , resave : true}));
+app.use(session({ secret: "sfidafgrtvfgi", saveUninitialized: true, resave: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use("/admin", AdminRouter);
 app.use("/task", TaskRouter);
 app.use("/user", userRouter);
-    
+
 app.listen(3000, () => {
     console.log("Server Started....");
 });

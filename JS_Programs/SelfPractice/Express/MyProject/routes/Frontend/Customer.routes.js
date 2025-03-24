@@ -1,5 +1,5 @@
 import express from "express";
-import { SignUp, verifyOtp, SignIn, ForgatePassword, ChangePassword } from "../../controller/Frontend/Costomer.controller.js"
+import { SignUp, verifyOtp, SignIn, ForgatePassword, ChangePassword } from "../../controller/Frontend/Customer.controller.js"
 const route = express.Router();
 import { body } from "express-validator";
 

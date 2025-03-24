@@ -19,7 +19,8 @@ export default class Admin {
             });
         });
     }
-            
+
+    
     SignInData(email, password) {
         return new Promise((resolve, reject) => {
             pool.getConnection((err, con) => {
@@ -29,7 +30,7 @@ export default class Admin {
                 let sql = "SELECT * FROM admin WHERE email = ? AND password = ?";
                 con.query(sql, [email, password], (err, result) => {
                     if (err) {
-               reject(err);
+                        reject(err);
                     }
                     resolve(result);
                 });

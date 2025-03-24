@@ -29,7 +29,7 @@ export const SignUp = async (req, res) => {
             return res.status(200).json({ msg: "Sign Up Successfull", user: result.dataValues });
         }
     } catch (error) {
-        return res.status(500).json({ msg: "ERROR SIGN-UP", err });
+        return res.status(500).json({ msg: "ERROR SIGN-UP", error });
     }
 }
 
@@ -49,7 +49,7 @@ export const verifyOtp = async (req, res) => {
                 }
                 let data = token.tokenGanrate(tokenObj);
                 res.cookie("admin", data);
-                return res.status(200).json({ msg: "Sign-In Successfully : " });
+                return res.status(200).json({ msg: "Verify Successfully : " });
             }
             return res.status(401).json({ msg: "WRONG OTP" });
         }

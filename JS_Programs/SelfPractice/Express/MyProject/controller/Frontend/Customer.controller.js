@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import Constomer from "../../module/Costomer.module.js";
+import Constomer from "../../module/Customer.module.js";
 import { validationResult } from "express-validator";
 import { Helpers } from "../../Helpers/Helper.js";
 import { Templete } from "../../Utils/templete.js";
@@ -49,7 +49,7 @@ export const verifyOtp = async (req, res) => {
                 }
                 let data = token.tokenGanrate(tokenObj);
                 res.cookie("costomer", data);
-                return res.status(200).json({ msg: "Sign-In Successfully : " });
+                return res.status(200).json({ msg: "Verify Successfully : " });
             }
             return res.status(401).json({ msg: "WRONG OTP" });
         }
