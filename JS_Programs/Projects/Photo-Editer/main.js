@@ -232,7 +232,7 @@ let filters = [
     { value: "saturate", text: "Saturation", min: 0, max: 300, default: 100 },
     { value: "sepia", text: "Sepia", min: 0, max: 100, default: 0 }
 ];
-
+ 
 // let filters = [
 //     { value: "none", text: "No Filter", min: 0, max: 100, default: 0 },
 //     { value: "blur", text: "Blur", min: 0, max: 20, default: 0 },
